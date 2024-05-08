@@ -1,0 +1,30 @@
+GET http://localhost:3333/cliente
+
+###
+
+POST http://localhost:3333/cliente
+Content-Type: application/json
+
+{
+    "nome": "Caue",
+    "cpf": "12345678901",
+    "email": "caue@unimake.com.br",
+    "telefone": "333333333",
+    "endereco": "avenida",
+    "cidade_cliente_id": 1
+
+}
+
+###
+
+PUT http://localhost:3333/cliente/atualizar/1
+Content-Type: application/json
+
+{
+    "nome": "Kleber 2",
+    "cpf": "1234567890"
+}
+
+###
+
+DELETE http://localhost:3333/cliente/excluir/2

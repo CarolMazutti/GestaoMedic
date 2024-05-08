@@ -2,14 +2,12 @@ const FornecedorModel = require("../model/FornecedorModel.js");
 
 const FornecedorController = {
 
-    //Função para listar os Fornecedores
     async listarFornecedor(request, reply, app){
         try {
-            //Guarda o resultado em uma variável para retornar depois
             const resultado = await FornecedorModel.listarFornecedor(request, reply, app);
             return resultado;
         } catch (error) {
-            console.error("Erro ao listar fornecedor: ", error);
+            console.error("Erro ao lista fornecedor: ", error);
             throw error;
         }
     },
