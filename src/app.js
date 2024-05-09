@@ -1,6 +1,7 @@
 const Fastify = require("fastify");
 const ClienteController = require("../src/controller/ClienteController.js");
 const FornecedorController = require("../src/controller/FornecedorController.js");
+const ProdutoController = require("./controller/ProdutoController.js");
 
 const app = Fastify({
     looger: true
@@ -63,6 +64,30 @@ app.put('/fornecedor/atualizar/:idfornecedor', function(request, reply){
 //Cria a rota para excluir o fornecedor do id informado
 app.delete('/fornecedor/excluir/:idfornecedor', function(request, reply){
     FornecedorController.excluirFornecedor(request, reply, app);
+})
+
+
+
+
+//Cria a rota para listar os produtos
+app.get("/produto", function(request, reply){
+    ProdutoController.listarProduto(request, reply, app);
+});
+//Cria a rota para listar o produto do id informado
+app.get("/produto/:id_produto", function (request, reply) {
+    ProdutoController.listarProdutoPorId(request, reply, app);
+});
+//Cria a rota para inserir o produto 
+app.post('/produto', function(request, reply) {
+    ProdutoController.inserirProduto(request, reply, app);
+});
+//Cria a rota para atualizar o produto do id informado
+app.put('/produto/atualizar/:id_produto', function(request, reply){
+    ProdutoController.atualizarProduto(request, reply, app);
+})
+//Cria a rota para excluir o produto do id informado
+app.delete('/produto/excluir/:id_produto', function(request, reply){
+    ProdutoController.excluirProduto(request, reply, app);
 })
 
 module.exports = {app};
