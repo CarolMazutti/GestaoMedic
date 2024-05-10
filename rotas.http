@@ -19,13 +19,13 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3333/produto/atualizar/1
+PUT http://localhost:3333/produto/atualizar/5
 Content-Type: application/json
 
 {
-    "nome": "Doril"
+    "nome": "Torsilax"
 }
 
 ###
 
-DELETE http://localhost:3333/produto/excluir/2
+DELETE http://localhost:3333/produto/excluir/5
