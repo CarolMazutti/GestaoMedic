@@ -2,6 +2,8 @@ const Fastify = require("fastify");
 const ClienteController = require("../src/controller/ClienteController.js");
 const FornecedorController = require("../src/controller/FornecedorController.js");
 const ProdutoController = require("./controller/ProdutoController.js");
+const EstadoController = require("./controller/EstadoController.js");
+const CidadeController = require("./controller/CidadeController.js");
 
 const app = Fastify({
     looger: true
@@ -89,5 +91,40 @@ app.put('/produto/atualizar/:id_produto', function(request, reply){
 app.delete('/produto/excluir/:id_produto', function(request, reply){
     ProdutoController.excluirProduto(request, reply, app);
 })
+
+
+
+
+//Cria a rota para listar os estados
+app.get("/estado", function(request, reply){
+    EstadoController.listarEstado(request, reply, app);
+});
+//Cria a rota para listar o estado do id informado
+app.get("/estado/:id_estado", function (request, reply) {
+    EstadoController.listarEstadoPorId(request, reply, app);
+});
+//Cria a rota para inserir o estado 
+app.post('/estado', function(request, reply) {
+    EstadoController.inserirEstado(request, reply, app);
+});
+//Cria a rota para atualizar o estado do id informado
+app.put('/estado/atualizar/:id_estado', function(request, reply){
+    EstadoController.atualizarEstado(request, reply, app);
+});
+//Cria a rota para excluir o estado do id informado
+app.delete('/estado/excluir/:id_estado', function(request, reply){
+    EstadoController.excluirEstado(request, reply, app);
+});
+
+
+
+
+app.get("/cidade", function(request, reply){
+    CidadeController.listarCidade(request, reply, app);
+});
+app.get("/cidade/:id_cidade", function(request, reply){
+    CidadeController.listarCidadePorId(request, reply, app);
+});
+
 
 module.exports = {app};

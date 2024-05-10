@@ -1,31 +1,28 @@
-GET http://localhost:3333/produto
+GET http://localhost:3333/cidade
 
 ###
 
-GET http://localhost:3333/produto/1
+GET http://localhost:3333/cidade/1
 
 ###
 
-POST http://localhost:3333/produto
+POST http://localhost:3333/estado
 Content-Type: application/json
 
 {
-    "nome": "Paracetamol",
-    "descricao": "Paracetamol 750mg c/12",
-    "preco": 7.00,
-    "quantidade": 10.00,
-    "fornecedor_produto_id": 1
+    "nome": "Rio de Janeiro",
+    "uf": "RJ"
 }
 
 ###
 
-PUT http://localhost:3333/produto/atualizar/5
+PUT http://localhost:3333/estado/atualizar/3
 Content-Type: application/json
 
 {
-    "nome": "Torsilax"
+    "nome": "Rio de Janeiro"
 }
 
 ###
 
-DELETE http://localhost:3333/produto/excluir/5
+DELETE http://localhost:3333/estado/excluir/3
