@@ -1,5 +1,3 @@
-const { listarCidadePorId } = require("../controller/CidadeController");
-
 const CidadeModel = {
  
     async listarCidade(request, reply, app){
