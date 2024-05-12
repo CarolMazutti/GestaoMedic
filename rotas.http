@@ -1,4 +1,4 @@
-GET http://localhost:3333/cidade
+GET http://localhost:3333/estado
 
 ###
 
@@ -6,12 +6,12 @@ GET http://localhost:3333/cidade/1
 
 ###
 
-POST http://localhost:3333/estado
+POST http://localhost:3333/cidade
 Content-Type: application/json
 
 {
-    "nome": "Rio de Janeiro",
-    "uf": "RJ"
+    "nome_cidade": "Terra Rica",
+    "estado_cidade_id": "1"
 }
 
 ###

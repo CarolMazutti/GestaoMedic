@@ -125,6 +125,8 @@ app.get("/cidade", function(request, reply){
 app.get("/cidade/:id_cidade", function(request, reply){
     CidadeController.listarCidadePorId(request, reply, app);
 });
-
+app.post('/cidade', function(request, reply){
+    CidadeController.atualizarCidade(request, reply, app);
+});
 
 module.exports = {app};
