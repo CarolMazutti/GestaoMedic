@@ -126,7 +126,13 @@ app.get("/cidade/:id_cidade", function(request, reply){
     CidadeController.listarCidadePorId(request, reply, app);
 });
 app.post('/cidade', function(request, reply){
+    CidadeController.inserirCidade(request, reply, app);
+});
+app.put('/cidade/atualizar/:id_cidade', function(request, reply){
     CidadeController.atualizarCidade(request, reply, app);
+});
+app.delete('/cidade/excluir/:id_cidade', function(request, reply){
+    CidadeController.excluirCidade(request, reply, app);
 });
 
 module.exports = {app};

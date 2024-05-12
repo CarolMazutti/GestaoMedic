@@ -1,4 +1,4 @@
-GET http://localhost:3333/estado
+GET http://localhost:3333/cidade
 
 ###
 
@@ -11,18 +11,19 @@ Content-Type: application/json
 
 {
     "nome_cidade": "Terra Rica",
-    "estado_cidade_id": "1"
+    "estado_cidade_id": 1
 }
+
 
 ###
 
-PUT http://localhost:3333/estado/atualizar/3
+PUT http://localhost:3333/cidade/atualizar/2
 Content-Type: application/json
 
 {
-    "nome": "Rio de Janeiro"
+    "nome_cidade": "Rio de Janeiro"
 }
 
 ###
 
-DELETE http://localhost:3333/estado/excluir/3
+DELETE http://localhost:3333/cidade/excluir/2
