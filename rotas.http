@@ -1,29 +1,31 @@
-GET http://localhost:3333/cidade
+GET http://localhost:3333/contas_a_pagar
 
 ###
 
-GET http://localhost:3333/cidade/1
+GET http://localhost:3333/contas_a_pagar/2
 
 ###
 
-POST http://localhost:3333/cidade
+POST http://localhost:3333/contas_a_pagar
 Content-Type: application/json
 
 {
-    "nome_cidade": "Terra Rica",
-    "estado_cidade_id": 1
+    "fornecedor_contas_pagar_id": 1,
+    "valor": 10.00,
+    "data_vencimento": "2024-05-13",
+    "data_pagamento": "2024-05-13"
 }
 
 
 ###
 
-PUT http://localhost:3333/cidade/atualizar/2
+PUT http://localhost:3333/contas_a_pagar/atualizar/2
 Content-Type: application/json
 
 {
-    "nome_cidade": "Rio de Janeiro"
+    "fornecedor_contas_pagar_id": 1
 }
 
 ###
 
-DELETE http://localhost:3333/cidade/excluir/2
+DELETE http://localhost:3333/contas_a_pagar/excluir/2

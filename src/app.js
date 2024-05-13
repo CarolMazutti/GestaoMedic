@@ -4,6 +4,7 @@ const FornecedorController = require("../src/controller/FornecedorController.js"
 const ProdutoController = require("./controller/ProdutoController.js");
 const EstadoController = require("./controller/EstadoController.js");
 const CidadeController = require("./controller/CidadeController.js");
+const Contas_a_pagarController = require("./controller/Contas_a_pagarController.js");
 
 const app = Fastify({
     looger: true
@@ -133,6 +134,25 @@ app.put('/cidade/atualizar/:id_cidade', function(request, reply){
 });
 app.delete('/cidade/excluir/:id_cidade', function(request, reply){
     CidadeController.excluirCidade(request, reply, app);
+});
+
+
+
+
+app.get("/contas_a_pagar", function(request, reply){
+    Contas_a_pagarController.listarContas_a_pagar(request, reply, app);
+});
+app.get("/contas_a_pagar/:id_contas_pagar", function(request, reply){
+    Contas_a_pagarController.listarContas_a_pagarPorId(request, reply, app);
+});
+app.post('/contas_a_pagar', function(request, reply){
+    Contas_a_pagarController.inserirContas_a_pagar(request, reply, app);
+});
+app.put('/contas_a_pagar/atualizar/:id_contas_pagar', function(request, reply){
+    Contas_a_pagarController.atualizarContas_a_pagar(request, reply, app);
+});
+app.delete('/contas_a_pagar/excluir/:id_contas_pagar', function(request, reply){
+    Contas_a_pagarController.excluirContas_a_pagar(request, reply, app);
 });
 
 module.exports = {app};
