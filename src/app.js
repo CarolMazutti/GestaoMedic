@@ -5,6 +5,7 @@ const ProdutoController = require("./controller/ProdutoController.js");
 const EstadoController = require("./controller/EstadoController.js");
 const CidadeController = require("./controller/CidadeController.js");
 const Contas_a_pagarController = require("./controller/Contas_a_pagarController.js");
+const Contas_a_receberController = require("./controller/Contas_a_receberController.js");
 
 const app = Fastify({
     looger: true
@@ -153,6 +154,26 @@ app.put('/contas_a_pagar/atualizar/:id_contas_pagar', function(request, reply){
 });
 app.delete('/contas_a_pagar/excluir/:id_contas_pagar', function(request, reply){
     Contas_a_pagarController.excluirContas_a_pagar(request, reply, app);
+});
+
+
+
+
+
+app.get("/contas_a_receber", function(request, reply){
+    Contas_a_receberController.listarContas_a_receber(request, reply, app);
+});
+app.get("/contas_a_receber/:id_contas_receber", function(request, reply){
+    Contas_a_receberController.listarContas_a_receberPorId(request, reply, app);
+});
+app.post('/contas_a_receber', function(request, reply){
+    Contas_a_receberController.inserirContas_a_receber(request, reply, app);
+});
+app.put('/contas_a_receber/atualizar/:id_contas_receber', function(request, reply){
+    Contas_a_receberController.atualizarContas_a_receber(request, reply, app);
+});
+app.delete('/contas_a_receber/excluir/:id_contas_receber', function(request, reply){
+    Contas_a_receberController.excluirContas_a_receber(request, reply, app);
 });
 
 module.exports = {app};

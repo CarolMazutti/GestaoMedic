@@ -43,7 +43,7 @@ const Contas_a_pagarController = {
         const result = await Contas_a_pagarModel.excluirContas_a_pagar(request, reply, app);
         return result;
     } catch (error) {
-        console.error("Erro ao excluir cidade", error);
+        console.error("Erro ao excluir contas a pagar", error);
     }
    },
 
@@ -52,7 +52,7 @@ const Contas_a_pagarController = {
         const result = await Contas_a_pagarModel.atualizarContas_a_pagar(request, reply, app);
         return result;
     } catch (error) {
-        console.error("Erro ao atualizar cidade", error);
+        console.error("Erro ao atualizar contas a receber", error);
     }
    },
 }
