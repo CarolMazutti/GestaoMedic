@@ -6,6 +6,7 @@ const EstadoController = require("./controller/EstadoController.js");
 const CidadeController = require("./controller/CidadeController.js");
 const Contas_a_pagarController = require("./controller/Contas_a_pagarController.js");
 const Contas_a_receberController = require("./controller/Contas_a_receberController.js");
+const UsuarioController = require("./controller/UsuarioController.js");
 
 const app = Fastify({
     looger: true
@@ -159,6 +160,19 @@ app.put('/contas_a_receber/atualizar/:id_contas_receber', function(request, repl
 });
 app.delete('/contas_a_receber/excluir/:id_contas_receber', function(request, reply){
     Contas_a_receberController.excluirContas_a_receber(request, reply, app);
+});
+
+
+
+
+app.get("/usuario", function(request, reply){
+    UsuarioController.listarUsuario(request, reply, app);
+});
+app.get("/usuario/:id_usuario", function(request, reply){
+    UsuarioController.listarUsuarioPorId(request, reply, app);
+});
+app.post('/usuario', function(request, reply){
+    UsuarioController.inserirUsuario(request, reply, app);
 });
 
 module.exports = {app};

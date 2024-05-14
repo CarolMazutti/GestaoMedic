@@ -1,31 +1,31 @@
-GET http://localhost:3333/contas_a_receber
+GET http://localhost:3333/usuario
 
 ###
 
-GET http://localhost:3333/contas_a_receber/3
+GET http://localhost:3333/usuario/4
 
 ###
 
-POST http://localhost:3333/contas_a_receber
+POST http://localhost:3333/usuario
 Content-Type: application/json
 
 {
-    "cliente_contas_receber_id": 6,
-    "valor": 20.00,
-    "data_vencimento": "2024-05-15",
-    "data_recebimento": "2024-05-13"
+    "nome": "Caroline Mazutti",
+    "login_user": "Carol",
+    "senha_user": "123",
+    "perfil": "gerente"
 }
 
 
 ###
 
-PUT http://localhost:3333/contas_a_receber/atualizar/3
+PUT http://localhost:3333/contas_a_receber/atualizar/4
 Content-Type: application/json
 
 {
-    "cliente_contas_receber_id": 3
+    "cliente_contas_receber_id": 6
 }
 
 ###
 
-DELETE http://localhost:3333/contas_a_receber/excluir/3
+DELETE http://localhost:3333/contas_a_receber/excluir/4
