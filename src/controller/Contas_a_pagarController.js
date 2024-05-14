@@ -20,14 +20,6 @@ const Contas_a_pagarController = {
         }
     },
 
-//    async inserirCidade(request, reply, app){
-//     try {
-//         const result = await CidadeModel.inserirCidade(request, reply, app);
-//         return result;
-//     } catch (error) {
-//         console.error("Erro ao inserir cidade", error);
-//     }
-//    },
 
     async inserirContas_a_pagar(request, reply, app){
         try {
@@ -52,7 +44,7 @@ const Contas_a_pagarController = {
         const result = await Contas_a_pagarModel.atualizarContas_a_pagar(request, reply, app);
         return result;
     } catch (error) {
-        console.error("Erro ao atualizar contas a receber", error);
+        console.error("Erro ao atualizar contas a pagar", error);
     }
    },
 }

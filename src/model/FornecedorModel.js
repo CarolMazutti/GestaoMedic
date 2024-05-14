@@ -1,7 +1,6 @@
 const FornecedorModel = {
     async listarFornecedor(request, reply, app){
         try {
-            //Faz a consulta no banco e retorna todas as linhas de informação
             app.pg.query('SELECT * FROM fornecedor', function onResult (err, result){
                 reply.send(result.rows);
             });
@@ -13,8 +12,6 @@ const FornecedorModel = {
 
     async listarFornecedorPorId(request, reply, app) {
         try {
-            //Faz a consulta no banco e retorna a informação
-            //A informação do id que vem do request é uma string, Number serve para mudar essa string para o tipo Number e assim não gera erro na consulta
             app.pg.query(`SELECT * FROM fornecedor WHERE fornecedor.idfornecedor = ${Number(request.params.idfornecedor)}`, function onResult(err, result) {
                 reply.send(err || result.rows);
             });
@@ -26,7 +23,6 @@ const FornecedorModel = {
 
     async inserirFornecedor(request, reply, app){
         try {
-            //Faz a inserção no banco e retorna uma mensagem se der certo
             app.pg.query(`INSERT INTO fornecedor (idfornecedor, nomefornecedor) VALUES ('${request.body.idfornecedor}', '${request.body.nomefornecedor}')`,
             function onResult(err, result){
                 reply.send({ mensagem: 'fornecedor inserido com sucesso' });
@@ -40,8 +36,6 @@ const FornecedorModel = {
 
     async atualizarFornecedor(request, reply, app) {
         try {
-            //Faz a atualização no banco e retorna uma mensagem se der certo
-            //A informação do id que vem do request é uma string, Number serve para mudar essa string para o tipo Number e assim não gera erro na consulta
             app.pg.query(`UPDATE fornecedor SET nomefornecedor = '${request.body.nomefornecedor}' WHERE fornecedor.idfornecedor = ${Number(request.params.idfornecedor)}`,
                 function onResult(err, result) {
                     reply.send({ mensagem: 'fornecedor atualizado com sucesso' });
@@ -55,8 +49,6 @@ const FornecedorModel = {
 
     async excluirFornecedor(request, reply, app){
         try {
-            //Faz a exclusão no banco e retorna uma mensagem se der certo
-            //A informação do id que vem do request é uma string, Number serve para mudar essa string para o tipo Number e assim não gera erro na consulta
             app.pg.query(`DELETE FROM fornecedor WHERE fornecedor.idfornecedor = ${Number(request.params.idfornecedor)}`,
         function onResult(err, result){
             reply.send({ mensagem: 'fornecedor excluído com sucesso' });

@@ -12,10 +12,8 @@ const FornecedorController = {
         }
     },
 
-    //Função para listar o Fornecedor do id informado
     async listarFornecedorPorId(request, reply, app) {
         try {
-            //Guarda o resultado em uma variável para retornar depois
             const resultado = await FornecedorModel.listarFornecedorPorId(request, reply, app);
             return resultado;
         } catch (error) {
@@ -23,10 +21,9 @@ const FornecedorController = {
             throw error;
         }
     },
-    //Função para inserir o Fornecedor
+
     async inserirFornecedor(request, reply, app){
         try {
-            //Aguarda a execução do inserirFornecedor de FornecedorModel
             await FornecedorModel.inserirFornecedor(request, reply, app);
         } catch (error) {
             console.error("Erro ao inserir fornecedor: ", error);
@@ -36,7 +33,6 @@ const FornecedorController = {
 
     async atualizarFornecedor(request, reply, app){
         try {
-            //Aguarda a execução do atualizarFornecedor de FornecedorModel
             await FornecedorModel.atualizarFornecedor(request, reply, app);
         } catch (error) {
             console.error("Erro ao atualizar Fornecedor: ", error);
@@ -46,7 +42,6 @@ const FornecedorController = {
 
     async excluirFornecedor(request, reply, app){
         try {
-            //Aguarda a execução do excluirFornecedor de FornecedorModel
             await FornecedorModel.excluirFornecedor(request, reply, app);
         } catch (error) {
             console.error("Erro ao excluir fornecedor: ", error);

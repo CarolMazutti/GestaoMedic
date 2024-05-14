@@ -36,7 +36,7 @@ const Contas_a_pagarModel = {
                             if (err) {
                                 reply.send(err)
                             } else {
-                                reply.send({ mensagem: 'Contas a pgar inserido com sucesso' })
+                                reply.send({ mensagem: 'Contas a pagar inserido com sucesso' })
                             }
                         })
             } catch (error) {

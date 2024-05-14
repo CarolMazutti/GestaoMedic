@@ -49,23 +49,18 @@ app.delete('/cliente/excluir/:id_cliente', function(request, reply){
 
 
 
-//Cria a rota para listar os fornecedores
 app.get("/fornecedor", function(request, reply){
     FornecedorController.listarFornecedor(request, reply, app);
 });
-//Cria a rota para listar o fornecedor do id informado
 app.get("/fornecedor/:idfornecedor", function (request, reply) {
     FornecedorController.listarFornecedorPorId(request, reply, app);
 });
-//Cria a rota para inserir o fornecedor 
 app.post('/fornecedor', function(request, reply) {
     FornecedorController.inserirFornecedor(request, reply, app);
 });
-//Cria a rota para atualizar o fornecedor do id informado
 app.put('/fornecedor/atualizar/:idfornecedor', function(request, reply){
     FornecedorController.atualizarFornecedor(request, reply, app);
 })
-//Cria a rota para excluir o fornecedor do id informado
 app.delete('/fornecedor/excluir/:idfornecedor', function(request, reply){
     FornecedorController.excluirFornecedor(request, reply, app);
 })
@@ -73,23 +68,18 @@ app.delete('/fornecedor/excluir/:idfornecedor', function(request, reply){
 
 
 
-//Cria a rota para listar os produtos
 app.get("/produto", function(request, reply){
     ProdutoController.listarProduto(request, reply, app);
 });
-//Cria a rota para listar o produto do id informado
 app.get("/produto/:id_produto", function (request, reply) {
     ProdutoController.listarProdutoPorId(request, reply, app);
 });
-//Cria a rota para inserir o produto 
 app.post('/produto', function(request, reply) {
     ProdutoController.inserirProduto(request, reply, app);
 });
-//Cria a rota para atualizar o produto do id informado
 app.put('/produto/atualizar/:id_produto', function(request, reply){
     ProdutoController.atualizarProduto(request, reply, app);
 })
-//Cria a rota para excluir o produto do id informado
 app.delete('/produto/excluir/:id_produto', function(request, reply){
     ProdutoController.excluirProduto(request, reply, app);
 })
@@ -97,23 +87,18 @@ app.delete('/produto/excluir/:id_produto', function(request, reply){
 
 
 
-//Cria a rota para listar os estados
 app.get("/estado", function(request, reply){
     EstadoController.listarEstado(request, reply, app);
 });
-//Cria a rota para listar o estado do id informado
 app.get("/estado/:id_estado", function (request, reply) {
     EstadoController.listarEstadoPorId(request, reply, app);
 });
-//Cria a rota para inserir o estado 
 app.post('/estado', function(request, reply) {
     EstadoController.inserirEstado(request, reply, app);
 });
-//Cria a rota para atualizar o estado do id informado
 app.put('/estado/atualizar/:id_estado', function(request, reply){
     EstadoController.atualizarEstado(request, reply, app);
 });
-//Cria a rota para excluir o estado do id informado
 app.delete('/estado/excluir/:id_estado', function(request, reply){
     EstadoController.excluirEstado(request, reply, app);
 });
