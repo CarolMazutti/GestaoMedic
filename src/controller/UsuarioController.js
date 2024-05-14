@@ -21,15 +21,6 @@ const UsuarioController = {
         }
     },
 
-    // async inserirContas_a_receber(request, reply, app){
-    //     try {
-    //         const result = await Contas_a_receberModel.inserirContas_a_receber(request, reply, app);
-    //         return result;
-    //     } catch (error) {
-    //         console.error("Erro ao inserir contas a receber", error)
-    //     }
-    // },
-
     async inserirUsuario(request, reply, app){
         try {
             const result = await UsuarioModel.inserirUsuario(request, reply, app);
@@ -39,23 +30,23 @@ const UsuarioController = {
         }
     },
 
-   async excluirContas_a_receber(request, reply, app){
-    try {
-        const result = await Contas_a_receberModel.excluirContas_a_receber(request, reply, app);
-        return result;
-    } catch (error) {
-        console.error("Erro ao excluir contas a receber", error);
-    }
-   },
+    async excluirUsuario(request, reply, app){
+        try {
+            const result = await UsuarioModel.excluirUsuario(request, reply, app);
+            return result;
+        } catch (error) {
+            console.error("Erro ao excluir usuário", error);
+        }
+    },
 
-   async atualizarContas_a_receber(request, reply, app){
-    try {
-        const result = await Contas_a_receberModel.atualizarContas_a_receber(request, reply, app);
-        return result;
-    } catch (error) {
-        console.error("Erro ao atualizar contas a receber", error);
-    }
-   },
+    async atualizarUsuario(request, reply, app){
+        try {
+            const result = await UsuarioModel.atualizarUsuario(request, reply, app);
+            return result;
+        } catch (error) {
+            console.error("Erro ao atualizar usuário", error);
+        }
+    },
 }
 
 module.exports = UsuarioController;

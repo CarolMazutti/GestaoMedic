@@ -174,5 +174,11 @@ app.get("/usuario/:id_usuario", function(request, reply){
 app.post('/usuario', function(request, reply){
     UsuarioController.inserirUsuario(request, reply, app);
 });
+app.put('/usuario/atualizar/:id_usuario', function(request, reply){
+    UsuarioController.atualizarUsuario(request, reply, app);
+});
+app.delete('/usuario/excluir/:id_usuario', function(request, reply){
+    UsuarioController.excluirUsuario(request, reply, app);
+});
 
 module.exports = {app};
