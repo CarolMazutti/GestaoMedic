@@ -7,6 +7,7 @@ const CidadeController = require("./controller/CidadeController.js");
 const Contas_a_pagarController = require("./controller/Contas_a_pagarController.js");
 const Contas_a_receberController = require("./controller/Contas_a_receberController.js");
 const UsuarioController = require("./controller/UsuarioController.js");
+const EstoqueController = require("./controller/EstoqueController.js");
 
 const app = Fastify({
     looger: true
@@ -179,6 +180,19 @@ app.put('/usuario/atualizar/:id_usuario', function(request, reply){
 });
 app.delete('/usuario/excluir/:id_usuario', function(request, reply){
     UsuarioController.excluirUsuario(request, reply, app);
+});
+
+
+
+
+app.get("/estoque", function(request, reply){
+    EstoqueController.listarEstoque(request, reply, app);
+});
+app.get("/estoque/:id_estoque", function(request, reply){
+    EstoqueController.listarEstoquePorId(request, reply, app);
+});
+app.post('/estoque', function(request, reply){
+    EstoqueController.inserirEstoque(request, reply, app);
 });
 
 module.exports = {app};

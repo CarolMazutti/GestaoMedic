@@ -1,19 +1,19 @@
-GET http://localhost:3333/usuario
+GET http://localhost:3333/estoque
 
 ###
 
-GET http://localhost:3333/usuario/4
+GET http://localhost:3333/estoque/7
 
 ###
 
-POST http://localhost:3333/usuario
+POST http://localhost:3333/estoque
 Content-Type: application/json
 
 {
-    "nome": "Caroline Mazutti",
-    "login_user": "Carol",
-    "senha_user": "123",
-    "perfil": "gerente"
+    "produto_estoque_id": 1,
+    "quantidade": 10,
+    "data_entrada": "2024-05-20"
+
 }
 
 
