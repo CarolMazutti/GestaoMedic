@@ -1,8 +1,8 @@
-const EstoqueModel = {
+const Controle_receituarioModel = {
 
-    async listarEstoque(request, reply, app){
+    async listarControle_receituario(request, reply, app){
         try {
-            app.pg.query('SELECT * from Estoque', function onResult (err, result){
+            app.pg.query('SELECT * FROM Controle_receituario', function onResult (err, result){
                 reply.send(result.rows);
             });
         } catch (error) {
@@ -10,9 +10,9 @@ const EstoqueModel = {
         }
     },
 
-    async listarEstoquePorId(request, reply, app){
+    async listarControle_receituarioPorId(request, reply, app){
         try {
-            app.pg.query(`SELECT * FROM estoque WHERE estoque.id_estoque = ${Number(request.params.id_estoque)}`, function onResult(err, result){
+            app.pg.query(`SELECT * FROM controle_receituario WHERE controle_receituario.id_receituario = ${Number(request.params.id_receituario)}`, function onResult(err, result){
                 if (err) {
                     reply.send(err);
                 } else {
@@ -24,19 +24,35 @@ const EstoqueModel = {
         }
     },
 
-    async inserirEstoque(request, reply, app){
+    // async inserirEstoque(request, reply, app){
+    //     try {
+    //         app.pg.query(`INSERT INTO estoque (produto_estoque_id, quantidade, data_entrada)
+    //                     VALUES (${Number(request.body.produto_estoque_id)}, '${request.body.quantidade}', '${request.body.data_entrada}')`,
+    //                 function onResult(err, result){
+    //                     if (err) {
+    //                         reply.send(err)
+    //                     } else {
+    //                         reply.send({ mensagem: 'Produto inserido no estoque com sucesso'});
+    //                     }
+    //                 })
+    //     } catch (error) {
+    //         console.error("Erro ao conectar no banco: ", error)
+    //     }
+    // },
+
+    async inserirControle_receituario(request, reply, app){
         try {
-            app.pg.query(`INSERT INTO estoque (produto_estoque_id, quantidade, data_entrada)
-                        VALUES (${Number(request.body.produto_estoque_id)}, '${request.body.quantidade}', '${request.body.data_entrada}')`,
+            app.pg.query(`INSERT INTO controle_receituario (produto_receituario_id, receituario, quantidade, data_validade)
+                        VALUES (${Number(request.body.produto_receituario_id)}, '${request.body.receituario}', '${request.body.quantidade}', '${request.body.data_validade}')`,
                     function onResult(err, result){
                         if (err) {
                             reply.send(err)
                         } else {
-                            reply.send({ mensagem: 'Produto inserido no estoque com sucesso'});
+                            reply.send({ mensagem: 'Receituário inserido com sucesso' });
                         }
                     })
         } catch (error) {
-            console.error("Erro ao conectar no banco: ", error)
+            console.error("Erro ao conectar no banco: ", erro);
         }
     },
 
@@ -71,4 +87,4 @@ const EstoqueModel = {
     }
 }
 
-module.exports = EstoqueModel;
+module.exports = Controle_receituarioModel;

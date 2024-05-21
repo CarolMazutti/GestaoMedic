@@ -1,19 +1,19 @@
-GET http://localhost:3333/estoque
+GET http://localhost:3333/controle_receituario
 
 ###
 
-GET http://localhost:3333/estoque/3
+GET http://localhost:3333/controle_receituario/1
 
 ###
 
-POST http://localhost:3333/estoque
+POST http://localhost:3333/controle_receituario
 Content-Type: application/json
 
 {
-    "produto_estoque_id": 1,
-    "quantidade": 10,
-    "data_entrada": "2024-05-20"
-
+    "produto_receituario_id": "3",
+    "receituario": "DFG456",
+    "quantidade":  "4",
+    "data_validade": "2024-05-21"
 }
 
 

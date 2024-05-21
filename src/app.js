@@ -8,6 +8,7 @@ const Contas_a_pagarController = require("./controller/Contas_a_pagarController.
 const Contas_a_receberController = require("./controller/Contas_a_receberController.js");
 const UsuarioController = require("./controller/UsuarioController.js");
 const EstoqueController = require("./controller/EstoqueController.js");
+const Controle_receituarioController = require("./controller/Controle_receituarioController.js");
 
 const app = Fastify({
     looger: true
@@ -201,4 +202,16 @@ app.delete('/estoque/excluir/:id_estoque', function(request, reply){
     EstoqueController.excluirEstoque(request, reply, app);
 });
 
+
+
+
+app.get("/controle_receituario", function(request, reply){
+    Controle_receituarioController.listarControle_receituario(request, reply, app);
+});
+app.get("/controle_receituario/:id_receituario", function(request, reply){
+    Controle_receituarioController.listarControle_receituarioPorId(request, reply, app);
+});
+app.post('/controle_receituario', function(request, reply){
+    Controle_receituarioController.inserirControle_receituario(request, reply, app);
+});
 module.exports = {app};

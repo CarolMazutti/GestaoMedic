@@ -37,15 +37,6 @@ const EstoqueController = {
         }
     },
 
-    // async excluirProduto(request, reply, app){
-    //     try {
-    //         await ProdutoModel.excluirProduto(request, reply, app);
-    //     } catch (error) {
-    //         console.error("Erro ao excluir Produto: ", error);
-    //         throw error;
-    //     }
-    // }
-
     async excluirEstoque(request, reply, app){
         try {
             await EstoqueModel.excluirEstoque(request, reply, app);
