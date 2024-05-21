@@ -194,5 +194,11 @@ app.get("/estoque/:id_estoque", function(request, reply){
 app.post('/estoque', function(request, reply){
     EstoqueController.inserirEstoque(request, reply, app);
 });
+app.put('/estoque/atualizar/:id_estoque', function(request, reply){
+    EstoqueController.atualizarEstoque(request, reply, app);
+});
+app.delete('/estoque/excluir/:id_estoque', function(request, reply){
+    EstoqueController.excluirEstoque(request, reply, app);
+});
 
 module.exports = {app};

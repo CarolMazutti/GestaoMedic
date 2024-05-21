@@ -21,15 +21,6 @@ const EstoqueController = {
         }
     },
 
-    // async inserirProduto(request, reply, app){
-    //     try {
-    //         await ProdutoModel.inserirProduto(request, reply, app);
-    //     } catch (error) {
-    //         console.error("Erro ao inserir Produto: ", error);
-    //         throw error;
-    //     }
-    // },
-
     async inserirEstoque(request, reply, app){
         try {
             await EstoqueModel.inserirEstoque(request, reply, app);
@@ -38,21 +29,28 @@ const EstoqueController = {
         }
     },
 
-    async atualizarProduto(request, reply, app){
+    async atualizarEstoque(request, reply, app){
         try {
-            await ProdutoModel.atualizarProduto(request, reply, app);
+            await EstoqueModel.atualizarEstoque(request, reply, app);
         } catch (error) {
-            console.error("Erro ao atualizar Produto: ", error);
-            throw error;
+            console.error("Erro ao atualizar estoque: ", error);
         }
     },
 
-    async excluirProduto(request, reply, app){
+    // async excluirProduto(request, reply, app){
+    //     try {
+    //         await ProdutoModel.excluirProduto(request, reply, app);
+    //     } catch (error) {
+    //         console.error("Erro ao excluir Produto: ", error);
+    //         throw error;
+    //     }
+    // }
+
+    async excluirEstoque(request, reply, app){
         try {
-            await ProdutoModel.excluirProduto(request, reply, app);
+            await EstoqueModel.excluirEstoque(request, reply, app);
         } catch (error) {
-            console.error("Erro ao excluir Produto: ", error);
-            throw error;
+            console.error("Erro ao escluir estoque: ", error);
         }
     }
 }
