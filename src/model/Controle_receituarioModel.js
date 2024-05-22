@@ -24,22 +24,6 @@ const Controle_receituarioModel = {
         }
     },
 
-    // async inserirEstoque(request, reply, app){
-    //     try {
-    //         app.pg.query(`INSERT INTO estoque (produto_estoque_id, quantidade, data_entrada)
-    //                     VALUES (${Number(request.body.produto_estoque_id)}, '${request.body.quantidade}', '${request.body.data_entrada}')`,
-    //                 function onResult(err, result){
-    //                     if (err) {
-    //                         reply.send(err)
-    //                     } else {
-    //                         reply.send({ mensagem: 'Produto inserido no estoque com sucesso'});
-    //                     }
-    //                 })
-    //     } catch (error) {
-    //         console.error("Erro ao conectar no banco: ", error)
-    //     }
-    // },
-
     async inserirControle_receituario(request, reply, app){
         try {
             app.pg.query(`INSERT INTO controle_receituario (produto_receituario_id, receituario, quantidade, data_validade)
@@ -56,14 +40,14 @@ const Controle_receituarioModel = {
         }
     },
 
-    async atualizarEstoque(request, reply, app) {
+    async atualizarControle_receituario(request, reply, app){
         try {
-            app.pg.query(`UPDATE estoque SET produto_estoque_id = ${Number(request.body.produto_estoque_id)} WHERE estoque.id_estoque = ${Number(request.params.id_estoque)}`,
-        function onResult(err,result){
+            app.pg.query(`UPDATE controle_receituario SET produto_receituario_id = ${Number(request.body.produto_receituario_id)} WHERE controle_receituario.id_receituario = ${Number(request.params.id_receituario)}`,
+        function onResult(err, result){
             if (err) {
                 reply.send(err)
             } else {
-                reply.send({ mensagem: 'Estoque atualizado com sucesso' });
+                reply.send({ mensagem: 'Receituario atualizado com sucesso'});
             }
         })
         } catch (error) {
@@ -71,14 +55,14 @@ const Controle_receituarioModel = {
         }
     },
 
-    async excluirEstoque(request, reply, app) {
+    async excluirControle_receituario(request, reply, app){
         try {
-            app.pg.query(`DELETE FROM estoque WHERE estoque.id_estoque = ${Number(request.params.id_estoque)}`,
+            app.pg.query(`DELETE FROM controle_receituario WHERE controle_receituario.id_receituario = ${Number(request.params.id_receituario)}`,
         function onResult(err, result){
             if (err) {
                 reply.send(err)
             } else {
-                reply.send({ mensagem: 'Estoque excluído com sucesso' });
+                reply.send({ mensagem: 'Receituario excluído com sucesso' });
             }
         })
         } catch (error) {

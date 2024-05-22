@@ -1,31 +1,31 @@
-GET http://localhost:3333/controle_receituario
+GET http://localhost:3333/controle_lote
 
 ###
 
-GET http://localhost:3333/controle_receituario/1
+GET http://localhost:3333/controle_lote/12
 
 ###
 
-POST http://localhost:3333/controle_receituario
+POST http://localhost:3333/controle_lote
 Content-Type: application/json
 
 {
-    "produto_receituario_id": "3",
-    "receituario": "DFG456",
-    "quantidade":  "4",
-    "data_validade": "2024-05-21"
+    "produto_lote_id": 4,
+    "lote": "ABC123",
+    "quantidade":  "10",
+    "data_validade": "2024-06-21"
 }
 
 
 ###
 
-PUT http://localhost:3333/estoque/atualizar/3
+PUT http://localhost:3333/controle_lote/atualizar/2
 Content-Type: application/json
 
 {
-    "produto_estoque_id": 1
+    "produto_lote_id": "4"
 }
 
 ###
 
-DELETE http://localhost:3333/estoque/excluir/3
+DELETE http://localhost:3333/controle_lote/excluir/12

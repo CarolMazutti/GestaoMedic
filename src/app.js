@@ -9,6 +9,7 @@ const Contas_a_receberController = require("./controller/Contas_a_receberControl
 const UsuarioController = require("./controller/UsuarioController.js");
 const EstoqueController = require("./controller/EstoqueController.js");
 const Controle_receituarioController = require("./controller/Controle_receituarioController.js");
+const Controle_loteController = require("./controller/Controle_loteController.js");
 
 const app = Fastify({
     looger: true
@@ -214,4 +215,30 @@ app.get("/controle_receituario/:id_receituario", function(request, reply){
 app.post('/controle_receituario', function(request, reply){
     Controle_receituarioController.inserirControle_receituario(request, reply, app);
 });
+app.put('/controle_receituario/atualizar/:id_receituario', function(request, reply){
+    Controle_receituarioController.atualizarControle_receituario(request, reply, app);
+});
+app.delete('/controle_receituario/excluir/:id_receituario', function(request, reply){
+    Controle_receituarioController.excluirControle_receituario(request, reply, app);
+});
+
+
+
+
+app.get("/controle_lote", function(request, reply){
+    Controle_loteController.listarControle_lote(request, reply, app);
+});
+app.get("/controle_lote/:id_lote", function(request, reply){
+    Controle_loteController.listarControle_lotePorId(request, reply, app);
+});
+app.post('/controle_lote', function(request, reply){
+    Controle_loteController.inserirControle_lote(request, reply, app);
+});
+app.put('/controle_lote/atualizar/:id_lote', function(request, reply){
+    Controle_loteController.atualizarControle_lote(request, reply, app);
+});
+app.delete('/controle_lote/excluir/:id_lote', function(request, reply){
+    Controle_loteController.excluirControle_lote(request, reply, app);
+});
+
 module.exports = {app};

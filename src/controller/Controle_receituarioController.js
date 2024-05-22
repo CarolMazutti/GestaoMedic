@@ -7,7 +7,7 @@ const Controle_receituarioController = {
             const resultado = await Controle_receituarioModel.listarControle_receituario(request, reply, app);
             return resultado;
         } catch (error) {
-            console.error("Erro ao listar controle de lote: ", error);
+            console.error("Erro ao listar receituário: ", error);
         }
     },
 
@@ -28,21 +28,19 @@ const Controle_receituarioController = {
         }
     },
 
-    // async atualizarProduto(request, reply, app){
-    //     try {
-    //         await ProdutoModel.atualizarProduto(request, reply, app);
-    //     } catch (error) {
-    //         console.error("Erro ao atualizar Produto: ", error);
-    //         throw error;
-    //     }
-    // },
-
-    async excluirProduto(request, reply, app){
+    async atualizarControle_receituario(request, reply, app){
         try {
-            await ProdutoModel.excluirProduto(request, reply, app);
+            await Controle_receituarioModel.atualizarControle_receituario(request, reply, app);
         } catch (error) {
-            console.error("Erro ao excluir Produto: ", error);
-            throw error;
+            console.error("Erro ao atualizar receituario: ", error);
+        }
+    },
+
+    async excluirControle_receituario(request, reply, app){
+        try {
+            await Controle_receituarioModel.excluirControle_receituario(request, reply, app);
+        } catch (error) {
+            console.error("Erro ao excluir receituario: ", error);
         }
     }
 }
