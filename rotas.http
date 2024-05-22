@@ -1,4 +1,4 @@
-GET http://localhost:3333/vendedor
+GET http://localhost:3333/controle_compra
 
 ###
 

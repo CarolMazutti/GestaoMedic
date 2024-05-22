@@ -11,6 +11,7 @@ const EstoqueController = require("./controller/EstoqueController.js");
 const Controle_receituarioController = require("./controller/Controle_receituarioController.js");
 const Controle_loteController = require("./controller/Controle_loteController.js");
 const VendedorController = require("./controller/VendedorController.js");
+const Controle_compraController = require("./controller/Controle_compraController.js");
 
 const app = Fastify({
     looger: true
@@ -261,4 +262,10 @@ app.delete('/vendedor/excluir/:id_vendedor', function(request, reply){
     VendedorController.excluirVendedor(request, reply, app);
 });
 
+
+
+
+app.get("/controle_compra", function(request, reply){
+    Controle_compraController.listarControle_compra(request, reply, app);
+});
 module.exports = {app};
