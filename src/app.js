@@ -10,6 +10,7 @@ const UsuarioController = require("./controller/UsuarioController.js");
 const EstoqueController = require("./controller/EstoqueController.js");
 const Controle_receituarioController = require("./controller/Controle_receituarioController.js");
 const Controle_loteController = require("./controller/Controle_loteController.js");
+const VendedorController = require("./controller/VendedorController.js");
 
 const app = Fastify({
     looger: true
@@ -239,6 +240,25 @@ app.put('/controle_lote/atualizar/:id_lote', function(request, reply){
 });
 app.delete('/controle_lote/excluir/:id_lote', function(request, reply){
     Controle_loteController.excluirControle_lote(request, reply, app);
+});
+
+
+
+
+app.get("/vendedor", function(request, reply){
+    VendedorController.listarVendedor(request, reply, app);
+});
+app.get("/vendedor/:id_vendedor", function(request, reply){
+    VendedorController.listarVendedorPorId(request, reply, app);
+});
+app.post('/vendedor', function(request, reply){
+    VendedorController.inserirVendedor(request, reply, app);
+});
+app.put('/vendedor/atualizar/:id_vendedor', function(request, reply){
+    VendedorController.atualizarVendedor(request, reply, app);
+});
+app.delete('/vendedor/excluir/:id_vendedor', function(request, reply){
+    VendedorController.excluirVendedor(request, reply, app);
 });
 
 module.exports = {app};

@@ -1,31 +1,30 @@
-GET http://localhost:3333/controle_lote
+GET http://localhost:3333/vendedor
 
 ###
 
-GET http://localhost:3333/controle_lote/12
+GET http://localhost:3333/vendedor/1
 
 ###
 
-POST http://localhost:3333/controle_lote
+POST http://localhost:3333/vendedor
 Content-Type: application/json
 
 {
-    "produto_lote_id": 4,
-    "lote": "ABC123",
-    "quantidade":  "10",
-    "data_validade": "2024-06-21"
+    "usuario_vendedor_id": 11, 
+    "nome": "Fulano de Tal", 
+    "cpf": "22222222222"
 }
 
 
 ###
 
-PUT http://localhost:3333/controle_lote/atualizar/2
+PUT http://localhost:3333/vendedor/atualizar/1
 Content-Type: application/json
 
 {
-    "produto_lote_id": "4"
+    "nome": "Ciclano"
 }
 
 ###
 
-DELETE http://localhost:3333/controle_lote/excluir/12
+DELETE http://localhost:3333/vendedor/excluir/1
