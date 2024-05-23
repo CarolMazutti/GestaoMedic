@@ -59,21 +59,6 @@ const VendedorModel = {
         }
     },
 
-    // async excluirUsuario(request, reply, app){
-    //     try {
-    //         app.pg.query(`DELETE FROM usuario WHERE usuario.id_usuario = ${Number(request.params.id_usuario)}`,
-    //         function onResult(err, result){
-    //             if (err) {
-    //                 reply.send(err)
-    //             } else {
-    //                 reply.send({ mensagem: 'Usuário excluído com sucesso' });
-    //             }
-    //         })
-    //     } catch (error) {
-    //         console.error("Erro ao conectar no banco de dados: ", error)
-    //     }
-    // },
-
     async excluirVendedor(request, reply, app){
         try {
             app.pg.query(`DELETE FROM vendedor WHERE vendedor.id_vendedor = ${Number(request.params.id_vendedor)}`,

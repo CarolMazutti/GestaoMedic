@@ -12,6 +12,8 @@ const Controle_receituarioController = require("./controller/Controle_receituari
 const Controle_loteController = require("./controller/Controle_loteController.js");
 const VendedorController = require("./controller/VendedorController.js");
 const Controle_compraController = require("./controller/Controle_compraController.js");
+const Carrinho_vendaController = require("./controller/Carrinho_vendaController.js");
+const VendaController = require("./controller/VendaController.js");
 
 const app = Fastify({
     looger: true
@@ -267,5 +269,55 @@ app.delete('/vendedor/excluir/:id_vendedor', function(request, reply){
 
 app.get("/controle_compra", function(request, reply){
     Controle_compraController.listarControle_compra(request, reply, app);
+});
+app.get("/controle_compra/:id_controle_compra", function(request, reply){
+    Controle_compraController.listarControle_compraPorId(request, reply, app);
+});
+app.post('/controle_compra', function(request, reply){
+    Controle_compraController.inserirControle_compra(request, reply, app);
+});
+app.put('/controle_compra/atualizar/:id_controle_compra', function(request, reply){
+    Controle_compraController.atualizarControle_compra(request, reply, app);
+});
+app.delete('/controle_compra/excluir/:id_controle_compra', function(request, reply){
+    Controle_compraController.excluirControle_compra(request, reply, app);
+});
+
+
+
+
+app.get("/carrinho_venda", function(request, reply){
+    Carrinho_vendaController.listarCarrinho_venda(request, reply, app);
+});
+app.get("/carrinho_venda/:id_carrinho_venda", function(request, reply){
+    Carrinho_vendaController.listarCarrinho_vendaPorId(request, reply, app);
+});
+app.post('/carrinho_venda', function(request, reply){
+    Carrinho_vendaController.inserirCarrinho_venda(request, reply, app);
+});
+app.put('/carrinho_venda/atualizar/:id_carrinho_venda', function(request, reply){
+    Carrinho_vendaController.atualizarCarrinho_venda(request, reply, app);
+});
+app.delete('/carrinho_venda/excluir/:id_carrinho_venda', function(request, reply){
+    Carrinho_vendaController.excluirCarrinho_venda(request, reply, app);
+});
+
+
+
+
+app.get("/venda", function(request, reply){
+    VendaController.listarVenda(request, reply, app);
+});
+app.get("/venda/:id_venda", function(request, reply){
+    VendaController.listarVendaPorId(request, reply, app);
+});
+app.post('/venda', function(request, reply){
+    VendaController.inserirVenda(request, reply, app);
+});
+app.put('/venda/atualizar/:id_venda', function(request, reply){
+    VendaController.atualizarVenda(request, reply, app);
+});
+app.delete('/venda/excluir/:id_venda', function(request, reply){
+    VendaController.excluirVenda(request, reply, app);
 });
 module.exports = {app};

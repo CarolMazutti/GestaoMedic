@@ -29,15 +29,6 @@ const VendedorController = {
         }
     },
 
-    // async excluirUsuario(request, reply, app){
-    //     try {
-    //         const result = await UsuarioModel.excluirUsuario(request, reply, app);
-    //         return result;
-    //     } catch (error) {
-    //         console.error("Erro ao excluir usuário", error);
-    //     }
-    // },
-
     async excluirVendedor(request, reply, app){
         try {
             const result = await VendedorModel.excluirVendedor(request, reply, app);

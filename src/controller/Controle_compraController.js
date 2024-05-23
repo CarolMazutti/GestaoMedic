@@ -2,56 +2,47 @@ const Controle_compraModel = require("../model/Controle_compraModel.js");
 
 const Controle_compraController = {
 
-    // async listarControle_lote(request, reply, app){
-    //     try {
-    //         const resultado = await Controle_loteModel.listarControle_lote(request, reply, app);
-    //         return resultado;
-    //     } catch (error) {
-    //         console.error("Erro ao listar controle de lote: ", error);
-    //     }
-    // },
-
     async listarControle_compra(request, reply, app){
         try {
             const resultado = await Controle_compraModel.listarControle_compra(request, reply, app);
             return resultado;
         } catch (error) {
-            console.error("Erro ao listar controle de compras: ", error);
+            console.error("Erro ao listar compras: ", error);
         }
     },
 
-    async listarControle_lotePorId(request, reply, app){
+    async listarControle_compraPorId(request, reply, app){
         try {
-            const resultado = await Controle_loteModel.listarControle_lotePorId(request, reply, app);
+            const resultado = await Controle_compraModel.listarControle_compraPorId(request, reply, app);
             return resultado;
         } catch (error) {
-            console.error("Erro ao listar lotes: ", error);
+            console.error("Erro ao listar compras: ", error);
         }
     },
 
-    async inserirControle_lote(request, reply, app){
+    async inserirControle_compra(request, reply, app){
         try {
-            await Controle_loteModel.inserirControle_lote(request, reply, app);
+            await Controle_compraModel.inserirControle_compra(request, reply, app);
         } catch (error) {
-            console.error("Erro ao inserir lote: ", error);
+            console.erro("Erro ao inserir compras: ", error);
         }
     },
 
-    async atualizarControle_lote(request, reply, app){
+    async atualizarControle_compra(request, reply, app){
         try {
-            await Controle_loteModel.atualizarControle_lote(request, reply, app);
+            await Controle_compraModel.atualizarControle_compra(request, reply, app);
         } catch (error) {
-            console.erro("Erro ao atualizar lote: ", error);
+            console.erro("Erro ao atualizar compra: ", error);
         }
     },
 
-    async excluirControle_lote(request, reply, app){
+    async excluirControle_compra(request, reply, app){
         try {
-            await Controle_loteModel.excluirControle_lote(request, reply, app);
+            await Controle_compraModel.excluirControle_compra(request, reply, app);
         } catch (error) {
-            console.error("Erro ao excluir lote: ", error);
+            console.error("Erro ao excluir compra: ", error);
         }
-    },
+    }
 }
 
 module.exports = Controle_compraController;

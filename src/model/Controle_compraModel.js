@@ -1,15 +1,5 @@
 const Controle_compraModel = {
 
-    // async listarControle_lote(request, reply, app){
-    //     try {
-    //         app.pg.query('SELECT * FROM controle_lote', function onResult(err, result){
-    //             reply.send(result.rows);
-    //         });
-    //     } catch (error) {
-    //         console.error("Erro ao conectar no banco: ", error);
-    //     }
-    // },
-
     async listarControle_compra(request, reply, app){
         try {
             app.pg.query('SELECT * FROM controle_compra', function onResult(err, result){
@@ -20,44 +10,14 @@ const Controle_compraModel = {
         }
     },
 
-    async listarControle_lotePorId(request, reply, app){
+    async listarControle_compraPorId(request, reply, app){
         try {
-            app.pg.query(`SELECT *FROM controle_lote WHERE controle_lote.id_lote = ${Number(request.params.id_lote)}`, function onResult(err, result){
-                if (err) {
-                    reply.send(err);
-                } else {
-                    reply.send(result.rows)
-                }
-            })
-        } catch (error) {
-            console.error("Erro ao conectar no banco: ", error);
-        }
-    },
-
-    async inserirControle_lote(request, reply, app){
-        try {
-            app.pg.query(`INSERT INTO controle_lote (produto_lote_id, lote, quantidade, data_validade)
-                        VALUES (${Number(request.body.produto_lote_id)}, '${request.body.lote}', '${request.body.quantidade}', '${request.body.data_validade}')`,
-                    function onResult(err, result){
-                        if (err) {
-                            reply.send(err)
-                        } else {
-                            reply.send({ mensagem: 'Lote inserido com sucesso' });
-                        }
-                    })
-        } catch (error) {
-            console.error("Erro ao conectar no banco: ", erro);
-        }
-    },
-
-    async atualizarControle_lote(request, reply, app){
-        try {
-            app.pg.query(`UPDATE controle_lote SET produto_lote_id = ${Number(request.body.produto_lote_id)} WHERE controle_lote.id_lote = ${Number(request.params.id_lote)}`,
+            app.pg.query(`SELECT * FROM controle_compra WHERE controle_compra.id_controle_compra = ${Number(request.params.id_controle_compra)}`,
         function onResult(err, result){
             if (err) {
-                reply.send(err)
+                reply.send(err);
             } else {
-                reply.send({ mensagem: 'Lote atualizado com sucesso' });
+                reply.send(result.rows)
             }
         })
         } catch (error) {
@@ -65,19 +25,46 @@ const Controle_compraModel = {
         }
     },
 
-    async excluirControle_lote(request, reply, app){
+    async inserirControle_compra(request, reply, app){
         try {
-            app.pg.query(`DELETE FROM controle_lote WHERE controle_lote.id_lote = ${Number(request.params.id_lote)}`,
+            app.pg.query(`INSERT INTO controle_compra (id_produto, quantidade, valor_unitario, valor_total, data_compra)
+                        VALUES (${Number(request.body.id_produto)}, '${request.body.quantidade}', '${request.body.valor_unitario}', '${request.body.valor_total}', '${request.body.data_compra}')`,
         function onResult(err, result){
             if (err) {
                 reply.send(err)
             } else {
-                reply.send({ mensagem: 'Lote excluído com sucesso' });
+                reply.send({ mensagem: 'Compra inserida com sucesso: '});
             }
         })
         } catch (error) {
             console.error("Erro ao conectar no banco: ", error);
         }
+    },
+
+    async atualizarControle_compra(request, reply, app){
+        try {
+            app.pg.query(`UPDATE controle_compra SET id_produto = ${Number(request.body.id_produto)} WHERE controle_compra.id_controle_compra = ${Number(request.params.id_controle_compra)}`,
+        function onResult(err, result){
+            if (err) {
+                reply.send(err)
+            } else {
+                reply.send({ mensagem: 'Compra atualizada com sucesso' });
+            }
+        })
+        } catch (error) {
+            console.error("Erro ao conectar no banco: ". error);
+        }
+    },
+
+    async excluirControle_compra(request, reply, app){
+        app.pg.query(`DELETE FROM controle_compra WHERE controle_compra.id_controle_compra = ${Number(request.params.id_controle_compra)}`,
+    function onResult(err, result){
+        if (err) {
+            reply.send(err)
+        } else {
+            reply.send({ mensagem: 'Compra excluída com sucesso '});
+        }
+    })
     }
 }
 
