@@ -320,4 +320,5 @@ app.put('/venda/atualizar/:id_venda', function(request, reply){
 app.delete('/venda/excluir/:id_venda', function(request, reply){
     VendaController.excluirVenda(request, reply, app);
 });
+
 module.exports = {app};
