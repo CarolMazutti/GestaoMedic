@@ -321,4 +321,15 @@ app.delete('/venda/excluir/:id_venda', function(request, reply){
     VendaController.excluirVenda(request, reply, app);
 });
 
+
+
 module.exports = {app};
+
+
+
+const cors = require('@fastify/cors');
+
+app.register(cors, {
+    origin: '*', // Isso permite requisições de qualquer origem.
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+});
