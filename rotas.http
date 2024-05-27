@@ -1,4 +1,4 @@
-GET http://localhost:3333/fornecedor
+GET http://localhost:3333/usuario
 
 ###
 
@@ -6,22 +6,21 @@ GET http://localhost:3333/fornecedor/3
 
 ###
 
-POST http://localhost:3333/fornecedor
+POST http://localhost:3333/usuario
 Content-Type: application/json
 
 {
-    "nome": "Fulano",
-    "cnpj": "12345678912", 
-    "email": "fulano@gmail.com",
-    "telefone": "4444444444",
-    "endereco": "Avenida",
-    "cidade_fornecedor_id": 1
+    "id_usuario": 9,
+    "nome": "Teste",
+    "login_user": "Teste",
+    "senha_user": "456",
+    "perfil": "admin"
 }
 
 
 ###
 
-PUT http://localhost:3333/fornecedor/atualizar/3
+PUT http://localhost:3333/usuario/atualizar/12
 Content-Type: application/json
 
 {
@@ -30,4 +29,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3333/fornecedor/excluir/3
+DELETE http://localhost:3333/usuario/excluir/12

@@ -137,7 +137,7 @@
 
             <!-- Produtos -->
             <li class="nav-item">
-                <a class="nav-link" href="cadastros_produto.html">
+                <a class="nav-link" href="lista_produto.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Produtos</span></a>
             </li>
@@ -377,39 +377,34 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Cadastros de produtos</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Lista de produtos</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="listaProduto" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Código</th>
+                                            <th>Nome</th>
+                                            <th>Descrição</th>
+                                            <th>Preço</th>
+                                            <th>Quantidade</th>
+                                            <th>Fornecedor</th>
+                                            <th>Ação</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Código</th>
+                                            <th>Nome</th>
+                                            <th>Descrição</th>
+                                            <th>Preço</th>
+                                            <th>Quantidade</th>
+                                            <th>Fornecedor</th>
+                                            <th>Ação</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -480,6 +475,9 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
+    <!-- Chama a função listaProduto quando a página carrega -->
+       <script src = "service/produto.js"></script>
 
 </body>
 
