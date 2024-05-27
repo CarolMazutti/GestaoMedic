@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
 
@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Register</title>
+    <title>Cadastrar fornecedor</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -36,34 +36,39 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Cadastro de fornecedor</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" id="fornecedorForm">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                        <input type="text" class="form-control form-control-user" id="nome_fornecedor"
                                             placeholder="Nome">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                        <input type="text" class="form-control form-control-user" id="cnpj_fornecedor"
                                             placeholder="CNPJ">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="email" class="form-control form-control-user" id="email_fornecedor"
                                         placeholder="E-mail">
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="tel" class="form-control form-control-user" id="telefone_fornecedor"
                                         placeholder="Telefone">
                                 </div>
                                 <div class="form-group">
-                                    <input type="Addres" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="Addres" class="form-control form-control-user" id="endereco_fornecedor"
                                         placeholder="Endereço">
+                                </div>
+                                <div class="form-group">
+                                    <input type="Addres" class="form-control form-control-user" id="cidade_fornecedor"
+                                        placeholder="Cidade">
                                 </div>
                                 <div class="form-group row">
                                 </div>
-                                <a href="fornecedor.html" class="btn btn-primary btn-user btn-block">
-                                    Inserir de fornecedor
-                                </a>
+                                <button type="button" class="btn btn-primary btn-user btn-block"
+                                    onclick="inserirFornecedor()">
+                                    Inserir fornecedor
+                                </button>
                                 <hr>
                                 <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                     <i class=""></i> Voltar
@@ -88,6 +93,8 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
+     <!-- Script para inserir fornecedor -->
+     <script src="service/fornecedor.js"></script>
 </body>
 
 </html>

@@ -60,16 +60,16 @@ app.delete('/cliente/excluir/:id_cliente', function(request, reply){
 app.get("/fornecedor", function(request, reply){
     FornecedorController.listarFornecedor(request, reply, app);
 });
-app.get("/fornecedor/:idfornecedor", function (request, reply) {
+app.get("/fornecedor/:id_fornecedor", function (request, reply) {
     FornecedorController.listarFornecedorPorId(request, reply, app);
 });
 app.post('/fornecedor', function(request, reply) {
     FornecedorController.inserirFornecedor(request, reply, app);
 });
-app.put('/fornecedor/atualizar/:idfornecedor', function(request, reply){
+app.put('/fornecedor/atualizar/:id_fornecedor', function(request, reply){
     FornecedorController.atualizarFornecedor(request, reply, app);
 })
-app.delete('/fornecedor/excluir/:idfornecedor', function(request, reply){
+app.delete('/fornecedor/excluir/:id_fornecedor', function(request, reply){
     FornecedorController.excluirFornecedor(request, reply, app);
 })
 

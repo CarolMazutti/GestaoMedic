@@ -1,33 +1,33 @@
-GET http://localhost:3333/cliente
+GET http://localhost:3333/fornecedor
 
 ###
 
-GET http://localhost:3333/venda/1
+GET http://localhost:3333/fornecedor/3
 
 ###
 
-POST http://localhost:3333/cliente
+POST http://localhost:3333/fornecedor
 Content-Type: application/json
 
 {
     "nome": "Fulano",
-    "cpf": "12345678912", 
+    "cnpj": "12345678912", 
     "email": "fulano@gmail.com",
     "telefone": "4444444444",
     "endereco": "Avenida",
-    "cidade_cliente_id": 1
+    "cidade_fornecedor_id": 1
 }
 
 
 ###
 
-PUT http://localhost:3333/venda/atualizar/3
+PUT http://localhost:3333/fornecedor/atualizar/3
 Content-Type: application/json
 
 {
-    "carrinho_venda_venda_id": 4
+    "nome": "Beltrano"
 }
 
 ###
 
-DELETE http://localhost:3333/venda/excluir/3
+DELETE http://localhost:3333/fornecedor/excluir/3
