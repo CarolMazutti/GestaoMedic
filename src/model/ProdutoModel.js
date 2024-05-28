@@ -13,7 +13,12 @@ const ProdutoModel = {
     async listarProdutoPorId(request, reply, app) {
         try {
             app.pg.query(`SELECT * FROM produto WHERE produto.id_produto = ${Number(request.params.id_produto)}`, function onResult(err, result) {
-                reply.send(err || result.rows);
+                
+                if(err){
+                    reply.send(err)
+                } else{
+                    reply.send(result.rows[0])
+                }
             });
         } catch (error) {
             console.error("Erro ao conectar no banco: ", error)
@@ -41,7 +46,14 @@ const ProdutoModel = {
 
     async atualizarProduto(request, reply, app) {
         try {
-            app.pg.query(`UPDATE produto SET nome = '${request.body.nome}' WHERE produto.id_produto = ${Number(request.params.id_produto)}`,
+            app.pg.query(`
+            UPDATE produto SET 
+                nome = '${request.body.nome}', 
+                descricao = '${request.body.descricao}',
+                preco = '${request.body.preco}',
+                quantidade = '${request.body.quantidade}',
+                fornecedor_produto_id = ${Number(request.body.fornecedor_produto_id)}
+            WHERE produto.id_produto = ${Number(request.params.id_produto)}`,
                 function onResult(err, result) {
                     if(err){
                         reply.send(err)
