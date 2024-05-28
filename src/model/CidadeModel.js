@@ -16,11 +16,11 @@ const CidadeModel = {
 
     async listarCidadePorId(request, reply, app){
         try {
-            app.pg.query(`SELECT * FROM Cidade where cidade.id_cidade = ${Number(request.params.id_cidade)}`, function onResult(err, result){
+            app.pg.query(`SELECT * FROM Cidade WHERE cidade.id_cidade = ${Number(request.params.id_cidade)}`, function onResult(err, result){
                 if (err) {
                     reply.send(err);
                 } else {
-                    reply.send(result.rows)
+                    reply.send(result.rows[0])
                 }
             })
         } catch (error) {
@@ -44,18 +44,39 @@ const CidadeModel = {
         }
     },
 
+    // async atualizarCidade(request, reply, app){
+    //     try {
+    //         app.pg.query(`UPDATE cidade SET nome_cidade = '${request.body.nome_cidade}' WHERE cidade.id_cidade = ${Number(request.params.id_cidade)}`,
+    //     function  onResult(err, result) {
+    //         if (err) {
+    //             reply.send(err)
+    //         } else {
+    //             reply.send({ mensagem: 'Cidade atualizada com sucesso' });
+    //         }
+    //     })
+    //     } catch (error) {
+    //         console.error("Erro ao conectar no banco: ", error)
+    //     }
+    // },
+
     async atualizarCidade(request, reply, app){
         try {
-            app.pg.query(`UPDATE cidade SET nome_cidade = '${request.body.nome_cidade}' WHERE cidade.id_cidade = ${Number(request.params.id_cidade)}`,
-        function  onResult(err, result) {
-            if (err) {
-                reply.send(err)
-            } else {
-                reply.send({ mensagem: 'Cidade atualizada com sucesso' });
-            }
-        })
+            app.pg.query(`
+            UPDATE cidade SET 
+                nome_cidade = '${request.body.nome_cidade}', 
+                estado_cidade_id = ${Number(request.body.estado_cidade_id)}
+            WHERE cidade.id_cidade = ${Number(request.params.id_cidade)}`,
+                function onResult(err, result) {
+                    if(err){
+                        reply.send(err)
+                    }else{
+                    reply.send({ mensagem: 'Cidade atualizada com sucesso' });
+                    }
+                }
+            )
         } catch (error) {
             console.error("Erro ao conectar no banco: ", error)
+            throw error;
         }
     },
 

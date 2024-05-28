@@ -20,11 +20,12 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3333/usuario/atualizar/12
+PUT http://localhost:3333/cidade/atualizar/1
 Content-Type: application/json
 
 {
-    "nome": "Beltrano"
+    "nome_cidade": "Paranavaí",
+    "estado_cidade_id": 1
 }
 
 ###
