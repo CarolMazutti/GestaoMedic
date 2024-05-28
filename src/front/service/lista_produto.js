@@ -35,6 +35,12 @@ function preencherTabela(produtos) {
         btnExcluir.textContent = 'Excluir';
         btnExcluir.onclick = () => excluirProduto(produto.id_produto);
         cellExcluir.appendChild(btnExcluir);
+
+        // Segundo botão, editar
+        const btnEditar = document.createElement('button');
+        btnEditar.textContent = 'Editar';
+        btnEditar.onclick = () => {window.location.href = `edita_produto.html?id=${produto.id_produto}`};
+        cellExcluir.appendChild(btnEditar);
     });
 }
 
@@ -45,13 +51,13 @@ async function excluirProduto(id_produto) {
         });
 
         if (!response.ok) {
-            throw new Error('Erro ao excluir produto1');
+            throw new Error('Erro ao excluir produto');
         }
 
         alert('Produto excluído com sucesso');
         listaProduto(); // Atualiza a tabela após a exclusão
     } catch (error) {
         console.error('Erro:', error);
-        alert('Erro ao excluir produto2');
+        alert('Erro ao excluir produto');
     }
 }
