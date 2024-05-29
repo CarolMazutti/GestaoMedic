@@ -13,7 +13,7 @@ const EstadoModel = {
     async listarEstadoPorId(request, reply, app) {
         try {
             app.pg.query(`SELECT * FROM Estado WHERE estado.id_estado = ${Number(request.params.id_estado)}`, function onResult(err, result) {
-                reply.send(err || result.rows);
+                reply.send(err || result.rows[0]);
             });
         } catch (error) {
             console.error("Erro ao conectar no banco: ", error)
@@ -41,7 +41,10 @@ const EstadoModel = {
 
     async atualizarEstado(request, reply, app) {
         try {
-            app.pg.query(`UPDATE Estado SET nome = '${request.body.nome}' WHERE estado.id_Estado = ${Number(request.params.id_estado)}`,
+            app.pg.query(`UPDATE Estado SET 
+            nome = '${request.body.nome}',
+            uf = '${request.body.uf}' 
+            WHERE estado.id_estado = ${Number(request.params.id_estado)}`,
                 function onResult(err, result) {
                     if(err){
                         reply.send(err)
