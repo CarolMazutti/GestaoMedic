@@ -12,7 +12,7 @@ const FornecedorModel = {
     async listarFornecedorPorId(request, reply, app) {
         try {
             app.pg.query(`SELECT * FROM fornecedor WHERE fornecedor.id_fornecedor = ${Number(request.params.id_fornecedor)}`, function onResult(err, result) {
-                reply.send(err || result.rows);
+                reply.send(err || result.rows[0]);
             });
         } catch (error) {
             console.error("Erro ao conectar no banco: ", error)
@@ -39,7 +39,14 @@ const FornecedorModel = {
 
     async atualizarFornecedor(request, reply, app) {
         try {
-            app.pg.query(`UPDATE fornecedor SET nome = '${request.body.nome}' WHERE fornecedor.id_fornecedor = ${Number(request.params.id_fornecedor)}`,
+            app.pg.query(`
+            UPDATE fornecedor SET 
+            nome = '${request.body.nome}',
+            cnpj = '${request.body.cnpj}',
+            email = '${request.body.email}',
+            telefone = '${request.body.telefone}',
+            endereco = '${request.body.endereco}'
+            WHERE fornecedor.id_fornecedor = ${Number(request.params.id_fornecedor)}`,
                 function onResult(err, result) {
                     if (err) {
                         err.send(err)

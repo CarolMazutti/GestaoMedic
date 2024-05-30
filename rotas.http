@@ -1,4 +1,4 @@
-GET http://localhost:3333/cidade
+GET http://localhost:3333/cliente
 
 ###
 
@@ -20,12 +20,16 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3333/cidade/atualizar/1
+PUT http://localhost:3333/cliente/atualizar/9
 Content-Type: application/json
 
 {
-    "nome_cidade": "Paranavaí",
-    "estado_cidade_id": 1
+    "nome": "Fulano de Tal",
+    "cpf": "778465123",
+    "email": "fulanodetal@gmail.com",
+    "telefone": "79846513",
+    "endereco": "Rua 10",
+    "cidade_cliente_id": 1
 }
 
 ###

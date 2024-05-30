@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    
 
-    <title>Editar estado</title>
+    <title>Editar vendedor</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,46 +24,57 @@
 </head>
 
 <body class="bg-gradient-primary">
+
     <div class="container">
+
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
+                    <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                     <div class="col-lg-6">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Editar Estado</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Editar vendedor</h1>
                             </div>
-                            <form class="user" id="editaEstadoForm">
+                            <form class="user" id="editaVendedorForm">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="edita_nome_estado" name="nome" placeholder="Nome" value="">
+                                        <input type="number" class="form-control form-control-user" id="edita_usuario_vendedor"
+                                            placeholder="Cód usuário" value="">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="edita_uf_estado" name="uf" placeholder="UF" value="">
+                                        <input type="text" class="form-control form-control-user" id="edita_nome_vendedor"
+                                            placeholder="Nome" value="">
                                     </div>
                                 </div>
-                                <hr>
-                                <button type="button" class="btn btn-primary btn-user btn-block" onclick="atualizaEstado()">
-                                    Atualizar Estado
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="edita_cpf_vendedor"
+                                        placeholder="CPF" value="">
+                                </div>
+                                <button type="button" class="btn btn-primary btn-user btn-block"
+                                    onclick="atualizaVendedor()">
+                                    Atualizar vendedor
                                 </button>
                                 <hr>
-                                <a href="lista_estado.html" class="btn btn-facebook btn-user btn-block">
-                                    Voltar
+                                <a href="lista_vendedor.html" class="btn btn-facebook btn-user btn-block">
+                                    <i class=""></i> Voltar
                                 </a>
                             </form>
                             <hr>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="js/sb-admin-2.min.js"></script>
-    <script src="service/estado.js"></script>
+    <script src="service/vendedor.js"></script>
 </body>
 
 </html>

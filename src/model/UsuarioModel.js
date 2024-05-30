@@ -20,7 +20,7 @@ const UsuarioModel = {
                 if (err) {
                     reply.send(err);
                 } else {
-                    reply.send(result.rows);
+                    reply.send(result.rows[0]);
                 }
             })
         } catch (error) {
@@ -46,7 +46,12 @@ const UsuarioModel = {
 
     async atualizarUsuario(request, reply, app){
         try {
-            app.pg.query(`UPDATE usuario SET nome = '${request.body.nome}' WHERE usuario.id_usuario = ${Number(request.params.id_usuario)}`,
+            app.pg.query(`
+            UPDATE usuario SET 
+            nome = '${request.body.nome}',
+            login_user = '${request.body.login_user}',
+            perfil = '${request.body.perfil}' 
+            WHERE usuario.id_usuario = ${Number(request.params.id_usuario)}`,
         function onResult(err, result){
             if (err) {
                 reply.send(err)

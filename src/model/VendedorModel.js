@@ -20,7 +20,7 @@ const VendedorModel = {
                 if (err) {
                     reply.send(err)
                 } else {
-                    reply.send(result.rows);
+                    reply.send(result.rows[0]);
                 }
             })
         } catch (error) {
@@ -46,7 +46,12 @@ const VendedorModel = {
 
     async atualizarVendedor(request, reply, app){
         try {
-            app.pg.query(`UPDATE vendedor SET nome = '${request.body.nome}' WHERE vendedor.id_vendedor = ${Number(request.params.id_vendedor)}`,
+            app.pg.query(`
+            UPDATE vendedor SET 
+            usuario_vendedor_id = ${Number(request.body.usuario_vendedor_id)},
+            nome = '${request.body.nome}',
+            cpf = '${request.body.cpf}'
+            WHERE vendedor.id_vendedor = ${Number(request.params.id_vendedor)}`,
         function onResult(err, result){
             if (err) {
                 reply.send(err)

@@ -16,7 +16,7 @@ const ClienteModel = {
             //Faz a consulta no banco e retorna a informação
             //A informação do id que vem do request é uma string, Number serve para mudar essa string para o tipo Number e assim não gera erro na consulta
             app.pg.query(`SELECT * FROM cliente WHERE cliente.id_cliente = ${Number(request.params.id_cliente)}`, function onResult(err, result) {
-                reply.send(err || result.rows);
+                reply.send(err || result.rows[0]);
             });
         } catch (error) {
             console.error("Erro ao conectar no banco: ", error)
@@ -47,7 +47,15 @@ const ClienteModel = {
         try {
             //Faz a atualização no banco e retorna uma mensagem se der certo
             //A informação do id que vem do request é uma string, Number serve para mudar essa string para o tipo Number e assim não gera erro na consulta
-            app.pg.query(`UPDATE cliente SET nome = '${request.body.nome}' WHERE cliente.id_cliente = ${Number(request.params.id_cliente)}`,
+            app.pg.query(`
+            UPDATE cliente SET 
+            nome = '${request.body.nome}',
+            cpf = '${request.body.cpf}',
+            email= '${request.body.email}',
+            telefone = '${request.body.telefone}',
+            endereco = '${request.body.endereco}',
+            cidade_cliente_id = ${Number(request.body.cidade_cliente_id)}
+            WHERE cliente.id_cliente = ${Number(request.params.id_cliente)}`,
                 function onResult(err, result) {
                     if(err){
                         reply.send(err)
