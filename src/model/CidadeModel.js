@@ -36,7 +36,7 @@ const CidadeModel = {
                         if (err) {
                             reply.send(err)
                         } else {
-                        reply.send({ mensagem: 'Cidade inserido com sucesso' });
+                        reply.send({ mensagem: 'Cidade inserida com sucesso' });
                         }
                     })
         } catch (error) {
