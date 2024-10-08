@@ -1,4 +1,6 @@
 const Fastify = require("fastify");
+const path = require('node:path')
+
 const ClienteController = require("../src/controller/ClienteController.js");
 const FornecedorController = require("../src/controller/FornecedorController.js");
 const ProdutoController = require("./controller/ProdutoController.js");
@@ -14,6 +16,7 @@ const VendedorController = require("./controller/VendedorController.js");
 const Controle_compraController = require("./controller/Controle_compraController.js");
 const Carrinho_vendaController = require("./controller/Carrinho_vendaController.js");
 const VendaController = require("./controller/VendaController.js");
+const MovimentacaoProdutoController = require("./controller/MovimentacaoProdutoController.js");
 
 const app = Fastify({
     looger: true
@@ -28,29 +31,71 @@ app.listen({port: 3333}, function(error, address){
     console.log("Servidor rodando", address)
 })
 
+app.register(require('@fastify/static'), {
+    root: path.join(__dirname, 'front'),
+    prefix: '/', // optional: default '/'
+})
+
 app.register(require("@fastify/postgres"), {
-    connectionString: "postgres://postgres:postgres@localhost:5432/gestaomedic"
+    connectionString: "postgres://postgres:root@localhost:5432/gestaomedic"
                      //postgres://username:senha@localhost:port/nome_banco
 })
 
+app.get("/inicio", function(request, reply){
+    return reply.sendFile('html/index.html')
+})
+
+app.get("/inserirCidade", sendHtmlFile("cidade", "cidade.html"));
+app.get("/listarCidade", sendHtmlFile("cidade", "lista_cidade.html"));
+app.get("/editarCidade", sendHtmlFile("cidade", "edita_cidade.html"));
+
+app.get("/inserirEstado", sendHtmlFile("estado", "estado.html"));
+app.get("/listarEstado", sendHtmlFile("estado", "lista_estado.html"));
+app.get("/editarEstado", sendHtmlFile("estado", "edita_estado.html"));
+
+function sendHtmlFile(pasta, caminho) {
+    return function (request, reply) {
+        reply.sendFile(`html/${pasta}/${caminho}`);
+    };
+}
+
+
+
+app.get("/estado", function (request, reply) {
+    EstadoController.listarEstado(request, reply, app);
+});
+app.get("/estado/:id_estado", function (request, reply) {
+    EstadoController.listarEstadoPorId(request, reply, app);
+});
+app.post('/estado', function (request, reply) {
+    EstadoController.inserirEstado(request, reply, app);
+});
+app.put('/estado/atualizar/:id_estado', function (request, reply) {
+    EstadoController.atualizarEstado(request, reply, app);
+});
+app.delete('/estado/excluir/:id_estado', function (request, reply) {
+    EstadoController.excluirEstado(request, reply, app);
+});
+
+
 //Cria a rota para listar os clientes
-app.get("/cliente", function(request, reply){
+app.get("/api/cliente", function(request, reply){
     ClienteController.listarCliente(request, reply, app);
 });
 //Cria a rota para listar o cliente do id informado
-app.get("/cliente/:id_cliente", function (request, reply) {
+app.get("/api/cliente/:id_cliente", function (request, reply) {
     ClienteController.listarClientePorId(request, reply, app);
 });
 //Cria a rota para inserir o cliente 
-app.post('/cliente', function(request, reply) {
+app.post('/api/cliente', function(request, reply) {
     ClienteController.inserirCliente(request, reply, app);
 });
 //Cria a rota para atualizar o cliente do id informado
-app.put('/cliente/atualizar/:id_cliente', function(request, reply){
+app.put('/api/cliente/atualizar/:id_cliente', function(request, reply){
     ClienteController.atualizarCliente(request, reply, app);
 })
 //Cria a rota para excluir o cliente do id informado
-app.delete('/cliente/excluir/:id_cliente', function(request, reply){
+app.delete('/api/cliente/excluir/:id_cliente', function(request, reply){
     ClienteController.excluirCliente(request, reply, app);
 })
 
@@ -94,39 +139,19 @@ app.delete('/produto/excluir/:id_produto', function(request, reply){
 
 
 
-
-app.get("/estado", function(request, reply){
-    EstadoController.listarEstado(request, reply, app);
-});
-app.get("/estado/:id_estado", function (request, reply) {
-    EstadoController.listarEstadoPorId(request, reply, app);
-});
-app.post('/estado', function(request, reply) {
-    EstadoController.inserirEstado(request, reply, app);
-});
-app.put('/estado/atualizar/:id_estado', function(request, reply){
-    EstadoController.atualizarEstado(request, reply, app);
-});
-app.delete('/estado/excluir/:id_estado', function(request, reply){
-    EstadoController.excluirEstado(request, reply, app);
-});
-
-
-
-
-app.get("/cidade", function(request, reply){
+app.get("/api/cidade", function(request, reply){
     CidadeController.listarCidade(request, reply, app);
 });
-app.get("/cidade/:id_cidade", function(request, reply){
+app.get("/api/cidade/:id_cidade", function(request, reply){
     CidadeController.listarCidadePorId(request, reply, app);
 });
-app.post('/cidade', function(request, reply){
+app.post('/api/cidade', function(request, reply){
     CidadeController.inserirCidade(request, reply, app);
 });
-app.put('/cidade/atualizar/:id_cidade', function(request, reply){
+app.put('/api/cidade/atualizar/:id_cidade', function(request, reply){
     CidadeController.atualizarCidade(request, reply, app);
 });
-app.delete('/cidade/excluir/:id_cidade', function(request, reply){
+app.delete('/api/cidade/excluir/:id_cidade', function(request, reply){
     CidadeController.excluirCidade(request, reply, app);
 });
 
@@ -200,7 +225,7 @@ app.get("/estoque/:id_estoque", function(request, reply){
 app.post('/estoque', function(request, reply){
     EstoqueController.inserirEstoque(request, reply, app);
 });
-app.put('/estoque/atualizar/:id_estoque', function(request, reply){
+app.put('/estoque/atualizar/', function(request, reply){
     EstoqueController.atualizarEstoque(request, reply, app);
 });
 app.delete('/estoque/excluir/:id_estoque', function(request, reply){
@@ -322,12 +347,17 @@ app.delete('/venda/excluir/:id_venda', function(request, reply){
 });
 
 
+// Movimentações do produto (venda, compra)
+app.post("/registrar-movimentacao", function(request, reply) {
+    MovimentacaoProdutoController.registrarMovimentacao(request, reply, app);
+});
 
 module.exports = {app};
 
 
 
 const cors = require('@fastify/cors');
+const { console } = require("node:inspector");
 
 app.register(cors, {
     origin: '*', // Isso permite requisições de qualquer origem.
