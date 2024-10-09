@@ -7,7 +7,7 @@ const ClienteModel = {
                     reply.status(500).send(err);
                 }
                 else if (result.rows.length > 0) {
-                    reply.stauts(200).send(result.rows);
+                    reply.status(200).send(result.rows);
                 }
                 else {
                     reply.status(204).send({ mensagem: 'Nenhum cliente foi encontrado' })
