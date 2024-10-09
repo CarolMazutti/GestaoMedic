@@ -52,20 +52,6 @@ const CidadeModel = {
         }
     },
 
-    // async atualizarCidade(request, reply, app){
-    //     try {
-    //         app.pg.query(`UPDATE cidade SET nome_cidade = '${request.body.nome_cidade}' WHERE cidade.id_cidade = ${Number(request.params.id_cidade)}`,
-    //     function  onResult(err, result) {
-    //         if (err) {
-    //             reply.send(err)
-    //         } else {
-    //             reply.send({ mensagem: 'Cidade atualizada com sucesso' });
-    //         }
-    //     })
-    //     } catch (error) {
-    //         console.error("Erro ao conectar no banco: ", error)
-    //     }
-    // },
 
     async atualizarCidade(request, reply, app) {
         try {
