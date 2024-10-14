@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Cidades</title>
+    <title>Compras</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -156,7 +156,7 @@
 
             <!-- Compras -->
             <li class="nav-item">
-                <a class="nav-link" href="compras.html">
+                <a class="nav-link" href="controle_compra.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Compras</span></a>
             </li>
@@ -395,12 +395,20 @@
                                     <input type="text" class="form-control" id="lote" placeholder="Digite o lote do produto">
                                 </div>
                                 <div class="form-group">
+                                    <label for="dataCompra">Data de validade:</label>
+                                    <input type="date" class="form-control" id="dataCompra" placeholder="Digite a data de validade">
+                                </div>
+                                <div class="form-group">
                                     <label for="quantidade">Quantidade:</label>
                                     <input type="number" class="form-control" id="quantidade" placeholder="Digite a quantidade do produto">
                                 </div>
                                 <div class="form-group">
                                     <label for="valor">Valor unitário:</label>
                                     <input type="number" class="form-control" id="valor" placeholder="Digite o valor unitário do produto">
+                                </div>
+                                <div class="form-group">
+                                    <label for="valorTotal">Valor total:</label>
+                                    <input type="number" class="form-control" id="valorTotal" placeholder="Valor total" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="fornecedor">Fornecedor:</label>
@@ -494,6 +502,16 @@
                 }
             });
         });
+
+        document.getElementById("quantidade").addEventListener("input", calcularValorTotal);
+        document.getElementById("valor").addEventListener("input", calcularValorTotal);
+
+        function calcularValorTotal() {
+            const quantidade = parseFloat(document.getElementById("quantidade").value);
+            const valorUnitario = parseFloat(document.getElementById("valor").value);
+            const valorTotal = quantidade * valorUnitario;
+            document.getElementById("valorTotal").value = valorTotal.toFixed(2);
+        }
     </script>
 
 </body>
