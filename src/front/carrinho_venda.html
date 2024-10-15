@@ -405,8 +405,17 @@
                 </div>
                 <div class="form-group">
                     <label for="dataVenda">Data da Venda:</label>
-                    <input type="date" class="form-control" id="dataVenda" placeholder="Digite a data da venda">
-                </div>
+                    <input type="date" class="form-control" id="dataVenda" value="" readonly>
+                  </div>
+                <div class="form-group">
+                    <label for="condicaoPagamento">Condição de Pagamento</label>
+                    <select class="form-control" id="condicaoPagamento">
+                      <option value="">Selecione uma opção</option>
+                      <option value="pix">Pix</option>
+                      <option value="dinheiro">Dinheiro</option>
+                      <option value="cartao">Cartão</option>
+                    </select>
+                  </div>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
         </div>
@@ -500,6 +509,15 @@
         document.getElementById("quantidade").addEventListener("input", calcularValorTotal);
         document.getElementById("desconto").addEventListener("input", calcularValorTotal);
         document.getElementById("valorUnitario").addEventListener("input", calcularValorTotal);
+        
+
+        const dataVenda = document.getElementById("dataVenda");
+        const dataAtual = new Date();
+        const dia = String(dataAtual.getDate()).padStart(2, '0');
+        const mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
+        const ano = dataAtual.getFullYear();
+        dataVenda.value = `${ano}-${mes}-${dia}`;
+
       </script>
 
 </body>
