@@ -47,6 +47,21 @@ const UsuarioController = {
             console.error("Erro ao atualizar usuário", error);
         }
     },
+
+    async autenticarUsuario(request, reply, app) {
+        try {
+          const { login, senha } = request.body;
+          const usuario = await UsuarioModel.autenticarUsuario(login, senha);
+          if (usuario) {
+            return reply.code(200).send({ mensagem: "Usuário autenticado com sucesso" });
+          } else {
+            return reply.code(401).send({ mensagem: "Login ou senha inválidos" });
+          }
+        } catch (error) {
+          console.error("Erro ao autenticar usuário", error);
+          return reply.code(500).send({ mensagem: "Erro ao autenticar usuário" });
+        }
+      },
 }
 
 module.exports = UsuarioController;

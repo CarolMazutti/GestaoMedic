@@ -30,17 +30,16 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Bem-vindo!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" id="form-login" action="/login" method="post">
                                         <div class="form-group">
-                                            <label for="login">Login</label>
-                                            <input type="text" id="login" class="form-control form-control-user" placeholder="Digite seu login">
+                                            <label for="login-input">Login</label>
+                                            <input type="text" id="login-input" class="form-control form-control-user" placeholder="Digite seu login">
                                         </div>
                                         <div class="form-group">
-                                            <label for="senha">Senha</label>
-                                            <input type="password" id="senha" class="form-control form-control-user" placeholder="Digite sua senha">
+                                            <label for="senha-input">Senha</label>
+                                            <input type="password" id="senha-input" class="form-control form-control-user" placeholder="Digite sua senha">
                                         </div>
                                         <div class="form-group">
-                                            
                                         </div>
                                         <button type="submit" id="btn-entrar" class="btn btn-primary btn-user btn-block">Entrar</button>
                                         <hr>
@@ -61,7 +60,7 @@
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
+    <!--Custom scripts for all pages -->
     <script src="js/sb-admin-2.min.js"></script>
 </body>
 </html>

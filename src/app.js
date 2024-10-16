@@ -351,6 +351,12 @@ app.delete('/venda/excluir/:id_venda', function(request, reply){
 
 
 
+
+app.post('/login', function(request, reply) {
+    UsuarioController.autenticarUsuario(request, reply, app);
+});
+
+
 module.exports = {app};
 
 

@@ -79,6 +79,41 @@ const UsuarioModel = {
             console.error("Erro ao conectar no banco de dados: ", error)
         }
     },
+
+    async autenticarUsuario(login, senha) {
+        try {
+          const query = `SELECT * FROM usuario WHERE login_user = $1 AND senha_user = $2`;
+          const result = await app.pg.query(query, [login, senha]);
+          if (result.rows.length > 0) {
+            return result.rows[0];
+          } else {
+            return null;
+          }
+        } catch (error) {
+          console.error("Erro ao autenticar usuário", error);
+          return null;
+        }
+      },
+
+    // async autenticarUsuario(login, senha) {
+    //     console.log("Autenticando usuário...");
+    //     try {
+    //       const query = `SELECT * FROM usuario WHERE login_user = $1 AND senha_user = $2`;
+    //       console.log("Executando consulta ao banco de dados...");
+    //       const result = await app.pg.query(query, [login, senha]);
+    //       console.log("Resultado da consulta:", result.rows);
+    //       if (result.rows.length > 0) {
+    //         console.log("Usuário autenticado com sucesso!");
+    //         return result.rows[0];
+    //       } else {
+    //         console.log("Usuário não encontrado ou senha incorreta.");
+    //         return null;
+    //       }
+    //     } catch (error) {
+    //       console.error("Erro ao autenticar usuário", error);
+    //       return null;
+    //     }
+    //   },
 }
 
 module.exports = UsuarioModel;
