@@ -30,8 +30,8 @@ const Contas_a_pagarModel = {
 
         async inserirContas_a_pagar(request, reply, app){
             try {
-                app.pg.query(`INSERT INTO contas_a_pagar (fornecedor_contas_pagar_id, valor, data_vencimento, data_pagamento)
-                            VALUES (${Number(request.body.fornecedor_contas_pagar_id)}, '${request.body.valor}', '${request.body.data_vencimento}', '${request.body.data_pagamento}')`,
+                app.pg.query(`INSERT INTO contas_a_pagar (fornecedor_contas_pagar_id, valor, data_vencimento, parcela, nfe)
+                            VALUES (${Number(request.body.fornecedor_contas_pagar_id)}, '${request.body.valor}', '${request.body.data_vencimento}', '${request.body.parcela}', '${request.body.nfe}')`,
                         function onResult(err, result){
                             if (err) {
                                 reply.send(err)

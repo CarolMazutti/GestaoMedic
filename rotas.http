@@ -1,4 +1,4 @@
-GET http://localhost:3333/cliente
+GET http://localhost:3333/venda
 
 ###
 
@@ -6,15 +6,15 @@ GET http://localhost:3333/fornecedor/3
 
 ###
 
-POST http://localhost:3333/usuario
+POST http://localhost:3333/contas_a_pagar
 Content-Type: application/json
 
 {
-    "id_usuario": 9,
-    "nome": "Teste",
-    "login_user": "Teste",
-    "senha_user": "456",
-    "perfil": "admin"
+    "fornecedor_contas_pagar_id": 2,
+    "valor": "20.00",
+    "data_vencimento": "2024-12-19",
+    "parcela": 1,
+    "nfe": "845126513"
 }
 
 

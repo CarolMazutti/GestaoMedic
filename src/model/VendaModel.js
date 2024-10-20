@@ -30,8 +30,8 @@ const VendaModel = {
 
     async inserirVenda(request, reply, app){
         try {
-            app.pg.query(`INSERT INTO venda (carrinho_venda_venda_id, data_venda, valor_total)
-                        VALUES (${Number(request.body.carrinho_venda_venda_id)}, '${request.body.data_venda}', '${request.body.valor_total}')`,
+            app.pg.query(`INSERT INTO venda (carrinho_venda_venda_id, data_venda, valor_total, condicao_de_pagamento)
+                        VALUES (${Number(request.body.carrinho_venda_venda_id)}, '${request.body.data_venda}', '${request.body.valor_total}', '${request.body.condicao_de_pagamento}')`,
                     function onResult(err, result){
                         if (err) {
                             reply.send(err)

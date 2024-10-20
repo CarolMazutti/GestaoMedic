@@ -27,8 +27,8 @@ const Controle_compraModel = {
 
     async inserirControle_compra(request, reply, app){
         try {
-            app.pg.query(`INSERT INTO controle_compra (id_produto, quantidade, valor_unitario, valor_total, data_compra)
-                        VALUES (${Number(request.body.id_produto)}, '${request.body.quantidade}', '${request.body.valor_unitario}', '${request.body.valor_total}', '${request.body.data_compra}')`,
+            app.pg.query(`INSERT INTO controle_compra (id_produto, quantidade, valor_unitario, valor_total, data_compra, nfe, valor_venda)
+                        VALUES (${Number(request.body.id_produto)}, '${request.body.quantidade}', '${request.body.valor_unitario}', '${request.body.valor_total}', '${request.body.data_compra}', '${request.body.nfe}', '${request.body.valor_venda}')`,
         function onResult(err, result){
             if (err) {
                 reply.send(err)
