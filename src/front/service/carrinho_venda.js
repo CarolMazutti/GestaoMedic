@@ -1,33 +1,30 @@
-async function enviarVenda() {
+async function inserirVenda() {
     try {
         // Coletar dados do formulário
         const usuario = document.getElementById('usuario').value;
         const produto = document.getElementById('produto').value;
         const quantidade = document.getElementById('quantidade').value;
-        const desconto = document.getElementById('desconto').value;
         const valorUnitario = document.getElementById('valorUnitario').value;
         const valorTotal = document.getElementById('valorTotal').value;
         const dataVenda = document.getElementById('dataVenda').value;
         const condicaoPagamento = document.getElementById('condicaoPagamento').value;
 
         // Validar dados
-        if (usuario === "" || produto === "" || quantidade === "" || valorTotal === "" || !dataVenda === "" || condicaoPagamento === "" ) {
+        if (usuario === "" || produto === "" || quantidade === "" || valorUnitario === "" || valorTotal === "" || dataVenda === "" || condicaoPagamento === "" ) {
             alert('Por favor, preencha todos os campos corretamente.');
             return;
         }
 
         // Preparar dados para envio
-        const Venda = {
-            carrinho_venda_venda_id: ,
-            itens: [{
-                id: produto,
-                quantidade,
-                valorUnitario,
-                desconto
-            }],
-            valorTotal,
-            dataVenda,
-            condicaoPagamento
+        const carrinho_venda = {
+            usuario_carrinho_id: usuario,
+            produto_carrinho_id: produto,
+            quantidade: quantidade,
+            data_venda: dataVenda,
+            valor_unitario: valorUnitario,
+            condicao_de_pagamento: condicaoPagamento,
+            valor_total: valorTotal
+
         };
 
         // Primeira requisição (Inserir Venda)
@@ -36,7 +33,7 @@ async function enviarVenda() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(dadosVenda),
+            body: JSON.stringify(carrinho_venda),
         });
 
         const data = await response.json();
@@ -71,7 +68,6 @@ async function enviarVenda() {
         alert('Ocorreu um erro ao processar a venda. Por favor, tente novamente.');
     }
 }
-
 function limparFormulario() {
     document.getElementById('usuario').value = '';
     document.getElementById('produto').value = '';

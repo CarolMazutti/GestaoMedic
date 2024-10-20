@@ -416,7 +416,7 @@
                       <option value="cartao">Cartão</option>
                     </select>
                   </div>
-                  <button type="button" id="finalizarVenda">Finalizar Venda</button>
+                  <button type="button" id="finalizarVenda" onclick="inserirVenda()">Finalizar Venda</button>
             </form>
         </div>
     </div>
@@ -526,13 +526,12 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('finalizarVenda').addEventListener('click', enviarVenda);
+        document.getElementById('finalizarVenda').addEventListener('click', inserirVenda);
         });
 
       </script>
 
-    <script src="carrinho_venda.js"></script>
-    <script src="venda.js"></script>
+    <script src="service/carrinho_venda.js"></script>
 
 </body>
 
