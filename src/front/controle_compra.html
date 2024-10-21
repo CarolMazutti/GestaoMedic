@@ -410,7 +410,7 @@
                                     <input type="text" class="form-control" id="lote" placeholder="Digite o lote do produto">
                                 </div>
                                 <div class="form-group">
-                                    <label for="dataCompra">Data de validade:</label>
+                                    <label for="dataValidade">Data de validade:</label>
                                     <input type="date" class="form-control" id="dataCompra" placeholder="Digite a data de validade">
                                 </div>
                                 <div class="form-group">
@@ -418,11 +418,11 @@
                                     <input type="number" class="form-control" id="quantidade" placeholder="Digite a quantidade do produto">
                                 </div>
                                 <div class="form-group">
-                                    <label for="valor">Valor unitário:</label>
+                                    <label for="valorUnitario">Valor unitário:</label>
                                     <input type="number" class="form-control" id="valor" placeholder="Digite o valor unitário do produto">
                                 </div>
                                 <div class="form-group">
-                                    <label for="valor">Valor de venda:</label>
+                                    <label for="valorVenda">Valor de venda:</label>
                                     <input type="number" class="form-control" id="valor" placeholder="Digite o valor de venda unitária do produto">
                                 </div>
                                 <div class="form-group">
@@ -532,6 +532,8 @@
             document.getElementById("valorTotal").value = valorTotal.toFixed(2);
         }
     </script>
+    <script src="service/controle_compra.js"></script>
+    <script src="service/controle_lote.js"></script>
 
 </body>
 

@@ -1,4 +1,4 @@
-GET http://localhost:3333/contas_a_pagar
+GET http://localhost:3333/vendedor
 
 ###
 
@@ -20,18 +20,21 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3333/cliente/atualizar/9
+PUT http://localhost:3333/controle_compra/atualizar/1
 Content-Type: application/json
 
 {
-    "nome": "Fulano de Tal",
-    "cpf": "778465123",
-    "email": "fulanodetal@gmail.com",
-    "telefone": "79846513",
-    "endereco": "Rua 10",
-    "cidade_cliente_id": 1
+    "id_controle_compra": 1,
+    "id_produto": 1,
+    "quantidade": 6,
+    "valor_unitario": "1.50",
+    "valor_total": "9.00",
+    "data_compra": "2024-05-22T03:00:00.000Z",
+    "nfe": "841321321",
+    "valor_venda": "100.00",
+    "fornecedor": 2
 }
 
 ###
 
-DELETE http://localhost:3333/produto/excluir/1
+DELETE http://localhost:3333/vendedor/excluir/8
