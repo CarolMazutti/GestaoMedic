@@ -1,4 +1,4 @@
-GET http://localhost:3333/vendedor
+GET http://localhost:3333/carrinho_venda
 
 ###
 
@@ -6,33 +6,34 @@ GET http://localhost:3333/carrinho_venda/2
 
 ###
 
-POST http://localhost:3333/contas_a_pagar
+POST http://localhost:3333/carrinho_venda
 Content-Type: application/json
 
 {
-            "fornecedor_contas_pagar_id": 1,
-            "valor": 30,
-            "data_vencimento": "2024-12-20",
-            "parcela": 3,
-            "nfe": "8653121"
+    "id_carrinho_venda": 29,
+    "usuario_carrinho_id": 15,
+    "produto_carrinho_id": 1,
+    "quantidade": 10,
+    "data_venda": "2024-10-20T03:00:00.000Z",
+    "valor_unitario": "20.00",
+    "condicao_de_pagamento": "dinheiro",
+    "valor_total": "160.00"
 }
 
 
 ###
 
-PUT http://localhost:3333/controle_compra/atualizar/1
+PUT http://localhost:3333/carrinho_venda/atualizar/29
 Content-Type: application/json
 
 {
-    "id_controle_compra": 1,
-    "id_produto": 1,
-    "quantidade": 6,
-    "valor_unitario": "1.50",
-    "valor_total": "9.00",
-    "data_compra": "2024-05-22T03:00:00.000Z",
-    "nfe": "841321321",
-    "valor_venda": "100.00",
-    "fornecedor": 2
+    "usuario_carrinho_id": 15,
+    "produto_carrinho_id": 1,
+    "quantidade": 10,
+    "data_venda": "2024-10-20T03:00:00.000Z",
+    "valor_unitario": "20.00",
+    "condicao_de_pagamento": "dinheiro",
+    "valor_total": "160.00"
 }
 
 ###
