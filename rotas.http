@@ -1,8 +1,32 @@
-GET http://localhost:3333/cliente
+GET http://localhost:3333/produto
 
 ###
 
-GET http://localhost:3333/carrinho_venda/2
+GET http://localhost:3333/carrinho_venda
+
+###
+
+POST http://localhost:3333/contas_a_pagar
+Content-Type: application/json
+
+{
+    "fornecedor_contas_pagar_id": 2, 
+    "valor": 160, 
+    "data_vencimento": "2025-03-31", 
+    "parcela": "6", 
+    "nfe": "74515"
+}
+
+###
+
+POST  http://localhost:3333/registrar_movimentacao
+Content-Type: application/json
+
+{
+    "id_produto": 4,
+    "tipo_movimentacao": "VENDA",
+    "quantidade": 3
+}
 
 ###
 

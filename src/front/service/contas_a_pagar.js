@@ -33,12 +33,14 @@ async function inserirContas_a_pagar() {
 
         const data = await response.json();
 
-        if (response.ok) {
+        if (response.ok) 
+        {
+            alert('Conta a pagar inserida com sucesso');
             // Limpar o formulário
             limparFormulario();
-            alert('Conta a pagar inserida com sucesso');
             // Aqui você pode adicionar código para atualizar a interface ou redirecionar o usuário
-        } else {
+        }
+        else {
             if (response.status === 400) {
                 alert('Erro ao inserir conta a pagar: ' + data.message);
             } else if (response.status === 500) {
@@ -48,6 +50,7 @@ async function inserirContas_a_pagar() {
             }
         }
     } catch (error) {
+        console.log(response)
         console.error('Erro ao processar a inserção da conta a pagar:', error);
         alert('Ocorreu um erro ao processar a conta a pagar. Por favor, tente novamente.');
     }

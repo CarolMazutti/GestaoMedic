@@ -5,6 +5,8 @@ const MovimentacaoProdutoModel = {
             const query = `INSERT INTO movimentacao_produto (id_produto, tipo_movimentacao, quantidade) VALUES ($1, $2, $3)`;
             const values = [id_produto, tipo_movimentacao, Number(quantidade)];
 
+            console.log(query, values)
+
             await app.pg.query(query, values);
 
             return { success: true };

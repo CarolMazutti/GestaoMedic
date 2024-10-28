@@ -16,6 +16,7 @@ const VendedorController = require("./controller/VendedorController.js");
 const Controle_compraController = require("./controller/Controle_compraController.js");
 const Carrinho_vendaController = require("./controller/Carrinho_vendaController.js");
 const VendaController = require("./controller/VendaController.js");
+MovimentacaoProdutoController = require("./controller/MovimentacaoProdutoController.js");
 
 const app = Fastify({
     looger: true
@@ -354,6 +355,10 @@ app.delete('/venda/excluir/:id_venda', function(request, reply){
 
 app.post('/api/login', function(request, reply) {
     UsuarioController.autenticarUsuario(request, reply, app);
+});
+
+app.post('/registrar_movimentacao', function(request, reply){
+    MovimentacaoProdutoController.registrarMovimentacao(request, reply, app);
 });
 
 

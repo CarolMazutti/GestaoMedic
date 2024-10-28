@@ -41,7 +41,7 @@ async function inserirVenda() {
         // Aqui verifico se a resposta da primeira requisição foi bem-sucedida
         if (response.ok) {
             // Segunda requisição (Registrar Movimentação)
-            await fetch('http://localhost:3333/registrar-movimentacao', {
+            await fetch('http://localhost:3333/registrar_movimentacao', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -55,10 +55,11 @@ async function inserirVenda() {
 
             // Aqui verifico se a resposta da segunda requisição foi bem-sucedida
             if (response.ok){
+                console.error("deu bom na movimentação")
                 // Limpar o formulário após a venda bem-sucedida
                 limparFormulario();
-                alert('Venda realizada com sucesso!');
                 // Redirecionar ou atualizar a página conforme necessário
+                alert('Venda realizada com sucesso!');
             }
             else{
                 alert('Erro ao registrar movimentação: ' + "\nMensagem: "+ data.message + "\nErro: " + data.error);
@@ -81,8 +82,8 @@ function limparFormulario() {
     document.getElementById('produto').value = '';
     document.getElementById('quantidade').value = '';
     document.getElementById('desconto').value = '';
-    document.getElementById('valor_unitario').value = '';
-    document.getElementById('valor_total').value = '';
-    document.getElementById('data_venda').value = new Date().toISOString().split('T')[0];
-    document.getElementById('condicao_pagamento').value = '';
+    document.getElementById('valorUnitario').value = '';
+    document.getElementById('valorTotal').value = '';
+    document.getElementById('dataVenda').value = new Date().toISOString().split('T')[0];
+    document.getElementById('condicaoPagamento').value = '';
 }
