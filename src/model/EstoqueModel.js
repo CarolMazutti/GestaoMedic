@@ -2,87 +2,79 @@ const EstoqueModel = {
 
     async listarEstoque(request, reply, app) {
         try {
-            app.pg.query('SELECT * from Estoque', function onResult(err, result) {
-                
-                if (err){
-                    reply.status(500).send(err);
-                } 
-                else if (result.rows.length > 0) {
-                    reply.status(200).send(result.rows);
-                } 
-                else{
-                    reply.status(204).send({ mensagem: 'Nenhum estoque encontrado' });
-                }
-                
-            });
+            const resposta = await app.pg.query('SELECT * from Estoque');
+
+            if (resposta.rows.length > 0) {
+                return { success: true, content: resposta.rows }
+            }
+            else {
+                return { success: false, message: 'Nenhum estoque foi encontrado' }
+            }
+            
         } catch (error) {
-            console.error("Erro ao conectar no banco: ", error);
+            return { message: 'Erro ao conectar no banco', error: error }
         }
     },
 
     async listarEstoquePorId(request, reply, app) {
         try {
-            app.pg.query(`SELECT * FROM estoque WHERE estoque.id_estoque = ${Number(request.params.id_estoque)}`, function onResult(err, result) {
-                if (err) {
-                    reply.status(500).send(err);
-                } 
-                else if (result.rows.length > 0) {
-                    reply.status(200).send(result.rows)
-                } 
-                else{
-                    reply.status(204).send({mensagem: 'Nenhum estoque encontrado'})
-                }
-            })
+            const query = `SELECT * FROM estoque WHERE estoque.id_estoque = $1`;
+            const values = [Number(request.params.id_estoque)];
+            const resposta = await app.pg.query(query, values);
+
+            if (resposta.rows.length > 0) {
+                return { success: true, content: resposta.rows[0] }
+            }
+            else{
+                return { success: false, message: 'Nenhum estoque foi encontrado' }
+            }
+            
         } catch (error) {
-            console.error("Erro ao conectar no banco: ", error);
+            return { message: 'Erro ao conectar no banco', error: error }
         }
     },
 
     async inserirEstoque(request, reply, app) {
         try {
-            app.pg.query(`INSERT INTO estoque (produto_estoque_id, quantidade, data_entrada)
-                        VALUES (${Number(request.body.produto_estoque_id)}, '${request.body.quantidade}', '${request.body.data_entrada}')`,
-                function onResult(err, result) {
-                    if (err) {
-                        reply.status(500).send(err)
-                    } else {
-                        reply.status(200).send({ mensagem: 'Produto inserido no estoque com sucesso' });
-                    }
-                })
+            const { produto_estoque_id, quantidade, data_entrada } = request.body;
+            const query = `INSERT INTO estoque (produto_estoque_id, quantidade, data_entrada) VALUES ($1, $2, $3)`;
+            const values = [Number(produto_estoque_id), quantidade, data_entrada];
+
+            await app.pg.query(query, values);
+
+            return { success: true };
+
         } catch (error) {
-            console.error("Erro ao conectar no banco: ", error)
+            return { success: false, message: 'Erro ao conectar no banco', error: error }
         }
     },
 
     async atualizarEstoque(request, reply, app) {
         try {
-            let ajusteQuantidade = request.body.tipo_movimentacao === 'entrada' ? Number(request.body.quantidade) : Number(-request.body.quantidade);
+            let ajusteQuantidade = request.body.tipo_movimentacao === 'COMPRA' ? Number(request.body.quantidade) : Number(-request.body.quantidade);
 
-            app.pg.query(`UPDATE estoque SET quantidade = ${ajusteQuantidade} WHERE produto_estoque_id = ${request.body.id_produto}`,
-                function (err, result) {
-                    if (err) {
-                        reply.status(500).send(err);
-                    } else {
-                        reply.status(200).send({ mensagem: 'Estoque atualizado com sucesso' });
-                    }
-                })
+            const query = `UPDATE estoque SET quantidade = ${ajusteQuantidade} WHERE produto_estoque_id = ${request.body.id_produto}`
+
+            await app.pg.query(query);
+
+            return { success: true };
+
         } catch (error) {
-            console.error("Erro ao conectar no banco: ", error);
+            return { success: false, message: 'Erro ao conectar no banco', error: error }
         }
     },
 
     async excluirEstoque(request, reply, app) {
         try {
-            app.pg.query(`DELETE FROM estoque WHERE estoque.id_estoque = ${Number(request.params.id_estoque)}`,
-                function onResult(err, result) {
-                    if (err) {
-                        reply.stauts(500).send(err)
-                    } else {
-                        reply.stauts(200).send({ mensagem: 'Estoque excluído com sucesso' });
-                    }
-                })
+            const query = `DELETE FROM estoque WHERE estoque.id_estoque = $1`;
+            const values = [Number(request.params.id_estoque)];
+
+            await app.pg.query(query, values);
+
+            return { success: true };
+
         } catch (error) {
-            console.error("Erro ao conectar no banco: ", error);
+            return { success: false, message: 'Erro ao conectar no banco', error: error }
         }
     }
 }

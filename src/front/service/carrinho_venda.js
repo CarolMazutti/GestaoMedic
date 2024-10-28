@@ -38,9 +38,10 @@ async function inserirVenda() {
 
         const data = await response.json();
 
+        // Aqui verifico se a resposta da primeira requisição foi bem-sucedida
         if (response.ok) {
             // Segunda requisição (Registrar Movimentação)
-            await fetch('http://localhost:3333/carrinho_venda', {
+            await fetch('http://localhost:3333/registrar-movimentacao', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -52,11 +53,18 @@ async function inserirVenda() {
                 }),
             });
 
-            // Limpar o formulário após a venda bem-sucedida
-            limparFormulario();
-            alert('Venda realizada com sucesso!');
-            // Redirecionar ou atualizar a página conforme necessário
-        } else {
+            // Aqui verifico se a resposta da segunda requisição foi bem-sucedida
+            if (response.ok){
+                // Limpar o formulário após a venda bem-sucedida
+                limparFormulario();
+                alert('Venda realizada com sucesso!');
+                // Redirecionar ou atualizar a página conforme necessário
+            }
+            else{
+                alert('Erro ao registrar movimentação: ' + "\nMensagem: "+ data.message + "\nErro: " + data.error);
+            }
+        } 
+        else {
             if (response.status === 400) {
                 alert('Erro ao realizar a venda: ' + data.message);
             } else if (response.status === 500) {
