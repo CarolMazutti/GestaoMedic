@@ -104,12 +104,12 @@
 
             <!-- Cadastros -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCadastros"
+                    aria-expanded="true" aria-controls="collapseCadastros">
+                    <i class="fas fa-file-signature"></i>
                     <span>Cadastros</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapseCadastros" class="collapse" aria-labelledby="headingCadastros" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Cadastros:</h6>
                         <a class="collapse-item" href="cidade.html">Cidade</a>
@@ -132,7 +132,7 @@
              <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseListas"
                     aria-expanded="true" aria-controls="collapseListas">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fas fa-list"></i>
                     <span>Listas</span>
                 </a>
                 <div id="collapseListas" class="collapse" aria-labelledby="headingListas" data-parent="#accordionSidebar">
@@ -154,11 +154,26 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                <a class="nav-link" href="controle_compra.html">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span>Compras</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contas_a_pagar.html">
+                    <i class="fas fa-money-bill"></i>
+                    <span>Contas a Pagar</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="carrinho_venda.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Carrinho de Vendas</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="relatorio_bi.html">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Relatórios</span>
+                </a>
             </li>
 
             <!-- Divider -->
@@ -177,16 +192,12 @@
 
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
                     <!-- Sidebar Toggle (Topbar) -->
-                    <form class="form-inline">
-                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                    </form>
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
 
                     <!-- Topbar Search -->
                     <form
@@ -235,7 +246,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
+                                <span class=" badge badge-danger badge-counter">3+</span>
                             </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -257,12 +268,12 @@
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="mr-3">
                                         <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
+                                            <i class="fas fa-donut-chart text-white"></i>
                                         </div>
                                     </div>
                                     <div>
                                         <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
+                                        <span class="font-weight-bold">Your account has been upgraded to premium!</span>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -273,7 +284,7 @@
                                     </div>
                                     <div>
                                         <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
+                                        <span class="font-weight-bold">Spam alert: Your account has been compromised!</span>
                                     </div>
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
@@ -296,8 +307,8 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_post_it.svg"
+                                            alt="">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -308,38 +319,24 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
+                                        <img class="rounded-circle" src="img/undraw_chart.svg"
+                                            alt="">
+                                        <div class="status-indicator bg-danger"></div>
                                     </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate">I have the photos that you ordered last month!</div>
+                                        <div class="small text-gray-500">James Davis · 2d</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
+                                        <img class="rounded-circle" src="img/undraw_rocket.svg"
+                                            alt="">
+                                        <div class="status-indicator bg-info"></div>
                                     </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate">Last month's report is available to download!</div>
+                                        <div class="small text-gray-500">David Miller · 3d</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
@@ -384,55 +381,63 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+               <!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Vendas</h1>
+    <p class="mb-4">Aqui você pode efetuar suas vendas.</p>
 
-                    <!-- Page Heading -->
-                    <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p> -->
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Lista Carrinho</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="listaCarrinho_venda" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Usuário</th>
-                                            <th>Produto</th>
-                                            <th>Quantidade</th>
-                                            <th>Valor Unitário</th>
-                                            <th>Valor Total</th>
-                                            <th>Data da Venda</th>
-                                            <th>Condição de Pagamento</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Usuário</th>
-                                            <th>Produto</th>
-                                            <th>Quantidade</th>
-                                            <th>Valor Unitário</th>
-                                            <th>Valor Total</th>
-                                            <th>Data da Venda</th>
-                                            <th>Condição de Pagamento</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Editar Vendas</h6>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-group" id="editaCarrinho_vendaForm">
+                    <label for="usuario">Usuário:</label>
+                    <input type="text" class="form-control" id="edita_usuario" placeholder="Usuario" value="">
                 </div>
-                <!-- /.container-fluid -->
+                <div class="form-group">
+                    <label for="produto">Produto:</label>
+                    <input type="text" class="form-control" id="edita_produto" placeholder="Produto" value="">
+                </div>
+                <div class="form-group">
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" class="form-control" id="edita_quantidade" placeholder="Quantidade" value="">
+                </div>
+                <div class="form-group">
+                    <label for="desconto">Desconto (%):</label>
+                    <input type="number" class="form-control" id="edita_desconto" placeholder="Desconto" value="">
+                </div>
+                <div class="form-group">
+                    <label for="valorUnitario">Valor Unitário:</label>
+                    <input type="number" class="form-control" id="edita_valorUnitario" placeholder="valorUnitario" value="">
+                </div>
+                <div class="form-group">
+                    <label for="valorTotal">Valor Total:</label>
+                    <input type="number" class="form-control" id="edita_valorTotal" placeholder="valorTotal"  value="" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="dataVenda">Data da Venda:</label>
+                    <input type="date" class="form-control" id="edita_dataVenda" value="" readonly>
+                  </div>
+                <div class="form-group">
+                    <label for="condicaoPagamento">Condição de Pagamento</label>
+                    <select class="form-control" id="edita_condicaoPagamento">
+                      <option value="">Selecione uma opção</option>
+                      <option value="pix">Pix</option>
+                      <option value="dinheiro">Dinheiro</option>
+                      <option value="cartao">Cartão</option>
+                    </select>
+                  </div>
+                  <button type="button" id="finalizarVenda" onclick="atualizaCarrinho_venda()">Finalizar Venda</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
 
             </div>
             <!-- End of Main Content -->
@@ -441,7 +446,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Your Website 2021</span>
                     </div>
                 </div>
             </footer>
@@ -465,7 +470,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close ">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
@@ -495,8 +500,53 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
 
-    <!-- Chama a função listaProduto quando a página carrega -->
-       <script src = "service/lista_carrinho_venda.js"></script>
+    <script>
+        function calcularValorTotal() {
+          const quantidade = parseFloat(document.getElementById("edita_quantidade").value);
+          const desconto = parseFloat(document.getElementById("edita_desconto").value) || 0; // Se não houver desconto, assume 0
+          const valorUnitario = parseFloat(document.getElementById("edita_valorUnitario").value);
+      
+          // Verifica se quantidade ou valorUnitario são válidos
+          if (isNaN(edita_quantidade) || isNaN(edita_valorUnitario)) {
+            document.getElementById("edita_valorTotal").value = "";
+            return;
+          }
+      
+          // Calcula o valor total considerando o desconto
+          const edita_valorTotal = edita_quantidade * edita_valorUnitario * (1 - edita_desconto / 100);
+          document.getElementById("edita_valorTotal").value = edita_valorTotal.toFixed(2);
+        }
+      
+        // Chama a função quando a página é carregada pela primeira vez
+        calcularValorTotal();
+      
+        // Adiciona listeners de evento input aos campos
+        document.getElementById("edita_quantidade").addEventListener("input", calcularValorTotal);
+        document.getElementById("edita_desconto").addEventListener("input", calcularValorTotal);
+        document.getElementById("edita_valorUnitario").addEventListener("input", calcularValorTotal);
+        
+
+        const dataVenda = document.getElementById("edita_dataVenda");
+        const dataAtual = new Date();
+        const dia = String(dataAtual.getDate()).padStart(2, '0');
+        const mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
+        const ano = dataAtual.getFullYear();
+        dataVenda.value = `${ano}-${mes}-${dia}`;
+
+        function obterDadosCarrinho() {
+            return {
+                itens: carrinhoItens,
+                total: calcularTotal()
+            };
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('atualizaCarrinho_venda').addEventListener('click', atualizaCarrinho_venda);
+        });
+
+      </script>
+
+    <script src="service/carrinho_venda.js"></script>
 
 </body>
 

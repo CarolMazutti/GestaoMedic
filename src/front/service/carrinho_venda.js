@@ -87,3 +87,76 @@ function limparFormulario() {
     document.getElementById('dataVenda').value = new Date().toISOString().split('T')[0];
     document.getElementById('condicaoPagamento').value = '';
 }
+
+document.addEventListener('DOMContentLoaded', async function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id_carrinho_venda = urlParams.get('id');
+
+    if (id_carrinho_venda) {
+        try {
+            const response = await fetch(`http://localhost:3333/carrinho_venda/${id_carrinho_venda}`);
+            if (!response.ok) {
+                throw new Error('Erro ao buscar venda');
+            }
+            const carrinho_venda = await response.json();
+
+            document.getElementById('edita_usuario').value = carrinho_venda.usuario_carrinho_id;
+            document.getElementById('edita_produto').value = carrinho_venda.produto_carrinho_id;
+            document.getElementById('edita_quantidade').value = carrinho_venda.quantidade;
+            document.getElementById('edita_valorUnitario').value = carrinho_venda.valorUnitario;
+            document.getElementById('edita_valorTotal').value = carrinho_venda.valorTotal;
+            document.getElementById('edita_dataVenda').value = carrinho_venda.dataVenda;
+            document.getElementById('edita_condicaoPagamento').value = carrinho_venda.condicaoPagamento;
+
+            console.log(carrinho_venda)
+
+        } catch (error) {
+            console.error('Erro:', error);
+            alert('Erro ao buscar venda');
+        }
+    }
+});
+
+async function atualizaCarrinho_venda() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id_carrinho_venda = urlParams.get('id');
+
+    const usuario = document.getElementById('edita_usuario').value;
+    const produto = document.getElementById('edita_produto').value;
+    const quantidade = document.getElementById('edita_quantidade').value;
+    const valorUnitario = document.getElementById('edita_valorUnitario').value;
+    const valorTotal = document.getElementById('edita_valorTotal').value;
+    const dataVenda = document.getElementById('edita_dataVenda').value;
+    const condicaoPagamento = document.getElementById('edita_condicaoPagamento').value;
+    
+
+    const carrinho_vendaAtualizado = {
+        usuario,
+        produto,
+        quantidade,
+        dataVenda,
+        valorUnitario,
+        condicaoPagamento,
+        valorTotal
+    };
+
+    try {
+        const response = await fetch(`http://localhost:3333/carrinho_venda/atualizar/${id_carrinho_venda}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(carrinho_vendaAtualizado)
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao atualizar venda');
+        }
+
+        alert('Venda atualizada com sucesso!');
+        window.location.href = 'lista_carrinho_venda.html';
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao atualizar venda');
+    }
+}

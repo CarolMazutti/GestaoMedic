@@ -29,15 +29,6 @@ const Carrinho_vendaController = {
         }
     },
 
-    // async excluirVendedor(request, reply, app){
-    //     try {
-    //         const result = await VendedorModel.excluirVendedor(request, reply, app);
-    //         return result;
-    //     } catch (error) {
-    //         console.error("Erro ao excluir vendedor: ", error);
-    //     }
-    // },
-
     async excluirCarrinho_venda(request, reply, app){
         try {
             const result = await Carrinho_vendaModel.excluirCarrinho_venda(request, reply, app);
