@@ -31,7 +31,7 @@ async function login(event) {
 
         if (response.ok) {
             // Login realizado com sucesso, redirecionar para a página de destino
-            window.location.href = '/inicio';
+            window.location.href = 'index2.html';
         } 
         else if (response.status === 401) {
             // Mostrar mensagem de credencial inválida

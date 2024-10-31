@@ -103,10 +103,10 @@ document.addEventListener('DOMContentLoaded', async function() {
             document.getElementById('edita_usuario').value = carrinho_venda.usuario_carrinho_id;
             document.getElementById('edita_produto').value = carrinho_venda.produto_carrinho_id;
             document.getElementById('edita_quantidade').value = carrinho_venda.quantidade;
-            document.getElementById('edita_valorUnitario').value = carrinho_venda.valorUnitario;
-            document.getElementById('edita_valorTotal').value = carrinho_venda.valorTotal;
-            document.getElementById('edita_dataVenda').value = carrinho_venda.dataVenda;
-            document.getElementById('edita_condicaoPagamento').value = carrinho_venda.condicaoPagamento;
+            document.getElementById('edita_valorUnitario').value = carrinho_venda.valor_unitario;
+            document.getElementById('edita_valorTotal').value = carrinho_venda.valor_total;
+            document.getElementById('edita_dataVenda').value = carrinho_venda.data_venda;
+            document.getElementById('edita_condicaoPagamento').value = carrinho_venda.condicao_de_pagamento;
 
             console.log(carrinho_venda)
 
@@ -121,23 +121,23 @@ async function atualizaCarrinho_venda() {
     const urlParams = new URLSearchParams(window.location.search);
     const id_carrinho_venda = urlParams.get('id');
 
-    const usuario = document.getElementById('edita_usuario').value;
-    const produto = document.getElementById('edita_produto').value;
+    const usuario_carrinho_id = document.getElementById('edita_usuario').value;
+    const produto_carrinho_id = document.getElementById('edita_produto').value;
     const quantidade = document.getElementById('edita_quantidade').value;
-    const valorUnitario = document.getElementById('edita_valorUnitario').value;
-    const valorTotal = document.getElementById('edita_valorTotal').value;
-    const dataVenda = document.getElementById('edita_dataVenda').value;
-    const condicaoPagamento = document.getElementById('edita_condicaoPagamento').value;
+    const valor_unitario = document.getElementById('edita_valorUnitario').value;
+    const valor_total = document.getElementById('edita_valorTotal').value;
+    const data_venda = document.getElementById('edita_dataVenda').value;
+    const condicao_de_pagamento = document.getElementById('edita_condicaoPagamento').value;
     
 
     const carrinho_vendaAtualizado = {
-        usuario,
-        produto,
+        usuario_carrinho_id,
+        produto_carrinho_id,
         quantidade,
-        dataVenda,
-        valorUnitario,
-        condicaoPagamento,
-        valorTotal
+        data_venda,
+        valor_unitario,
+        condicao_de_pagamento,
+        valor_total
     };
 
     try {
@@ -149,6 +149,7 @@ async function atualizaCarrinho_venda() {
             body: JSON.stringify(carrinho_vendaAtualizado)
         });
 
+        console.log("Atualizado:", carrinho_vendaAtualizado)
         if (!response.ok) {
             throw new Error('Erro ao atualizar venda');
         }

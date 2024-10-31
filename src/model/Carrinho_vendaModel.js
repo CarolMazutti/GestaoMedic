@@ -56,12 +56,22 @@ const Carrinho_vendaModel = {
 
     async atualizarCarrinho_venda(request, reply, app) {
         try {
-            app.pg.query(`UPDATE carrinho_venda SET usuario_carrinho_id = ${Number(request.body.usuario_carrinho_id)} WHERE carrinho_venda.id_carrinho_venda = ${Number(request.params.id_carrinho_venda)}`,
+            app.pg.query(`
+                UPDATE carrinho_venda SET 
+                    usuario_carrinho_id = ${Number(request.body.usuario_carrinho_id)},
+                    produto_carrinho_id = ${Number(request.body.produto_carrinho_id)},
+                    quantidade = '${request.body.quantidade}',
+                    data_venda = '${request.body.data_venda}',
+                    valor_unitario = '${request.body.valor_unitario}',
+                    condicao_de_pagamento = '${request.body.condicao_de_pagamento}',
+                    valor_total = '${request.body.valor_total}'
+                
+                WHERE carrinho_venda.id_carrinho_venda = ${Number(request.params.id_carrinho_venda)}`,
                 function onResult(err, result) {
                     if (err) {
                         reply.status(500).send(err)
                     } else {
-                        reply.stauts(200).send({ mensagem: 'Item atualizado no carrinho' });
+                        reply.status(200).send({ mensagem: 'Item atualizado no carrinho' });
                     }
                 })
         } catch (error) {
