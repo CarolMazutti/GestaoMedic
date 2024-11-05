@@ -53,7 +53,13 @@ const EstoqueModel = {
         try {
             let ajusteQuantidade = request.body.tipo_movimentacao === 'COMPRA' ? Number(request.body.quantidade) : Number(-request.body.quantidade);
 
-            const query = `UPDATE estoque SET quantidade = ${ajusteQuantidade} WHERE produto_estoque_id = ${request.body.id_produto}`
+            const queryConsulta = `SELECT * FROM estoque WHERE produto_estoque_id = ${request.body.id_produto}`
+
+            const result = await app.pg.query(queryConsulta);
+
+            qtdeAtualizada = Number(result.rows[0].quantidade) + ajusteQuantidade;
+
+            const query = `UPDATE estoque SET quantidade = ${qtdeAtualizada} WHERE produto_estoque_id = ${request.body.id_produto}`
 
             await app.pg.query(query);
 
