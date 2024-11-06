@@ -1,6 +1,7 @@
-async function inserirContas_a_pagar() {
+async function inserirControle_compra() {
     try {
         // Coletar dados do formulário
+        const lote = document.getElementById('lote').value;
         const produto = document.getElementById('produto').value;
         const quantidade = document.getElementById('quantidade').value;
         const valorUnitario = document.getElementById('valorUnitario').value;
@@ -9,9 +10,10 @@ async function inserirContas_a_pagar() {
         const fornecedor = document.getElementById('fornecedor').value;
         const nfe = document.getElementById('nfe').value;
         const dataCompra = document.getElementById('dataCompra').value;
+        const dataValidade = document.getElementById('dataValidade').value;
 
         // Validar dados
-        if (produto === "" || dataValidade === "" || quantidade === "" || valorUnitario === "" || valorVenda === "" || valorTotal === ""|| fornecedor === ""|| nfe === ""|| dataCompra === "") {
+        if (produto === "" || quantidade === "" || valorUnitario === "" || valorVenda === "" || valorTotal === ""|| fornecedor === ""|| nfe === ""|| dataCompra === "") {
             alert('Por favor, preencha todos os campos corretamente.');
             return;
         }
@@ -28,6 +30,24 @@ async function inserirContas_a_pagar() {
             valor_venda: valorVenda,
         };
 
+        const controle_lote = {
+            produto_lote_id: produto,
+            lote: lote,
+            quantidade: quantidade,
+            data_validade: dataValidade,
+        };
+
+        // Requisição para inserir lote
+        const response = await fetch('http://localhost:3333/controle_lote', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(controle_lote),
+        });
+
+        const controleLote = await response.json();
+
         // Requisição para inserir conta a pagar
         const response = await fetch('http://localhost:3333/controle_compra', {
             method: 'POST',
@@ -37,7 +57,7 @@ async function inserirContas_a_pagar() {
             body: JSON.stringify(controle_compra),
         });
 
-        const data = await response.json();
+        const controleCompra = await response.json();
 
         if (response.ok) {
             // Limpar o formulário
@@ -46,9 +66,9 @@ async function inserirContas_a_pagar() {
             // Aqui você pode adicionar código para atualizar a interface ou redirecionar o usuário
         } else {
             if (response.status === 400) {
-                alert('Erro ao cadastrar compra: ' + data.message);
+                alert('Erro ao cadastrar compra: ' + controleLote.message + controleCompra.message);
             } else if (response.status === 500) {
-                alert('Erro interno do servidor: ' + data.message);
+                alert('Erro interno do servidor: ' + controleLote.message + controleCompra.message);
             } else {
                 alert('Erro desconhecido ao cadastrar compra');
             }
@@ -64,6 +84,10 @@ function limparFormulario() {
     document.getElementById('quantidade').value = '';
     document.getElementById('valorUnitario').value = '';
     document.getElementById('valorVenda').value = '';
+    document.getElementById('valorTotal').value = '';
+    document.getElementById('fornecedor').value = '';
+    document.getElementById('nfe').value = '';
+    document.getElementById('dataCompra').value = '';
     document.getElementById('valorTotal').value = '';
     document.getElementById('fornecedor').value = '';
     document.getElementById('nfe').value = '';

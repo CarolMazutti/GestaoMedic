@@ -1,43 +1,14 @@
-GET http://localhost:3333/produto
+GET http://localhost:3333/lote
 
 ###
 
-GET http://localhost:3333/carrinho_venda
-
-###
-
-POST http://localhost:3333/contas_a_pagar
+POST http://localhost:3333/estoque
 Content-Type: application/json
 
 {
-    "fornecedor_contas_pagar_id": 2, 
-    "valor": 160, 
-    "data_vencimento": "2025-03-31", 
-    "parcela": "6", 
-    "nfe": "74515"
-}
-
-###
-
-POST  http://localhost:3333/registrar_movimentacao
-Content-Type: application/json
-
-{
-    "id_produto": 4,
-    "tipo_movimentacao": "VENDA",
-    "quantidade": 3
-}
-
-###
-
-POST http://localhost:3333/contas_a_receber
-Content-Type: application/json
-
-{
-    "cliente_contas_receber_id": 6,
-    "valor": "30.00",
-    "data_vencimento": "2024-05-15T03:00:00.000Z",
-    "data_recebimento": "2024-05-13T03:00:00.000Z"
+    "produto_estoque_id": 3,
+    "quantidade": 10,
+    "data_entrada": "2024-12-13T03:00:00.000Z"
 }
 
 
