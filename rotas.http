@@ -1,4 +1,4 @@
-GET http://localhost:3333/lote
+GET http://localhost:3333/controle_compra
 
 ###
 
@@ -11,6 +11,22 @@ Content-Type: application/json
     "data_entrada": "2024-12-13T03:00:00.000Z"
 }
 
+###
+
+POST http://localhost:3333/controle_compra
+
+Content-Type: application/json
+
+{
+    "id_produto": 3,
+    "quantidade": 1,
+    "valor_unitario": 144.00,
+    "valor_total": 144.00,
+    "fornecedor": "1",
+    "data_compra": "2024-05-30T03:00:00.000Z",
+    "nfe": 6.00,
+    "valor_venda": 1.00
+}
 
 ###
 

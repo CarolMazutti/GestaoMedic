@@ -55,11 +55,11 @@ async function inserirVenda() {
 
             // Aqui verifico se a resposta da segunda requisição foi bem-sucedida
             if (response.ok){
-                console.error("deu bom na movimentação")
                 // Limpar o formulário após a venda bem-sucedida
                 limparFormulario();
                 // Redirecionar ou atualizar a página conforme necessário
                 alert('Venda realizada com sucesso!');
+                return;
             }
             else{
                 alert('Erro ao registrar movimentação: ' + "\nMensagem: "+ data.message + "\nErro: " + data.error);

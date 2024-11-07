@@ -18,6 +18,8 @@ async function inserirControle_compra() {
             return;
         }
 
+        
+
         // Preparar dados para envio
         const controle_compra = {
             id_produto: produto,
@@ -30,6 +32,7 @@ async function inserirControle_compra() {
             valor_venda: valorVenda,
         };
 
+
         const controle_lote = {
             produto_lote_id: produto,
             lote: lote,
@@ -37,19 +40,31 @@ async function inserirControle_compra() {
             data_validade: dataValidade,
         };
 
-        // Requisição para inserir lote
-        const response = await fetch('http://localhost:3333/controle_lote', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(controle_lote),
-        });
+        if (lote != "") {
+            // Requisição para inserir lote
+            const response_lote = await fetch('http://localhost:3333/controle_lote', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(controle_lote),
+            });
 
-        const controleLote = await response.json();
+            const controleLote = await response_lote.json();
 
-        // Requisição para inserir conta a pagar
-        const response = await fetch('http://localhost:3333/controle_compra', {
+            //nao kkkkk
+            // é pq ele não ta sendo usado mesmo
+            // KKKKKK
+
+            if (!controleLote.ok){
+                alert('Erro ao controle lote');
+            }
+        }
+        
+        console.log("Compra: ", JSON.stringify(controle_compra))
+
+        // Requisição para inserir controle compra
+        const response_controle_compra = await fetch('http://localhost:3333/controle_compra', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,13 +72,15 @@ async function inserirControle_compra() {
             body: JSON.stringify(controle_compra),
         });
 
-        const controleCompra = await response.json();
+        const controleCompra = await response_controle_compra.json();
 
-        if (response.ok) {
+        if (response_controle_compra.ok) {
             // Limpar o formulário
             limparFormulario();
             alert('Compra cadastrada com sucesso');
             // Aqui você pode adicionar código para atualizar a interface ou redirecionar o usuário
+            // KKKKKKKKKK
+
         } else {
             if (response.status === 400) {
                 alert('Erro ao cadastrar compra: ' + controleLote.message + controleCompra.message);

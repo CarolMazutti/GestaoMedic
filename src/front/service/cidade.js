@@ -1,15 +1,15 @@
 async function inserirCidade() {
     const nome = document.getElementById("nome_cidade").value;
-    const estado = document.getElementById("estado_cidade").value;
+    const estadoId = document.getElementById("select_estado").value;
 
-    if (nome === "" || estado === "") {
+    if (nome === "" || estadoId === "") {
         alert ("Por favor, preencha todos os campos.");
         return;
     }
 
     const cidade = {
         nome_cidade: nome,
-        estado_cidade_id: estado
+        estado_cidade_id: estadoId
     };
 
     try {
@@ -35,7 +35,7 @@ async function inserirCidade() {
 
 // -----------------------
 
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', carregarEstados, async function() {
     const urlParams = new URLSearchParams(window.location.search);
     const idCidade = urlParams.get('id');
 
@@ -58,6 +58,29 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     }
 });
+
+async function carregarEstados() {
+    try {
+        const response =  await fetch('http://localhost:3333/estado');
+        if (!response.ok){
+            throw new Error('Erro ao buscar estados');
+        }
+
+        const estados = await response.json();
+        const select_estado = document.getElementById('select_estado');
+
+        estados.forEach(estado => {
+            const opcao = document.createElement("option");
+            opcao.value = estado.id_estado
+            opcao.textContent = estado.nome
+            select_estado.appendChild(opcao);
+        });
+
+    } catch (error) {
+        console.error("erro: ", error)
+        alert("Erro ao buscar estados")
+    }
+}
 
 async function atualizaCidade() {
     const urlParams = new URLSearchParams(window.location.search);
