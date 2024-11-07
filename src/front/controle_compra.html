@@ -423,7 +423,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="valorVenda">Valor de venda:</label>
-                                    <input type="number" class="form-control" id="valor" placeholder="Digite o valor de venda unitária do produto">
+                                    <input type="number" class="form-control" id="valorVenda" placeholder="Digite o valor de venda unitária do produto">
                                 </div>
                                 <div class="form-group">
                                     <label for="valorTotal">Valor total:</label>
@@ -441,7 +441,7 @@
                                     <label for="dataCompra">Data da Compra:</label>
                                     <input type="date" class="form-control" id="dataCompra" placeholder="Digite a data da compra">
                                 </div>
-                                <button type="submit" id="finalizarCompra" onclick="inserirControle_compra()" class="btn btn-primary">Finalizar Compra</button>
+                                <button type="button" id="finalizarCompra" onclick="inserirControle_compra()" class="btn btn-primary">Finalizar Compra</button>
                             </form>
                         </div>
                     </div>
@@ -523,11 +523,11 @@
         });
 
         document.getElementById("quantidade").addEventListener("input", calcularValorTotal);
-        document.getElementById("valor").addEventListener("input", calcularValorTotal);
+        document.getElementById("valorVenda").addEventListener("input", calcularValorTotal);
 
         function calcularValorTotal() {
             const quantidade = parseFloat(document.getElementById("quantidade").value);
-            const valorUnitario = parseFloat(document.getElementById("valor").value);
+            const valorUnitario = parseFloat(document.getElementById("valorVenda").value);
             const valorTotal = quantidade * valorUnitario;
             document.getElementById("valorTotal").value = valorTotal.toFixed(2);
         }
