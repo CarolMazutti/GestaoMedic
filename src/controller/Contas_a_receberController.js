@@ -25,7 +25,7 @@ const Contas_a_receberController = {
             const result = await Contas_a_receberModel.inserirContas_a_receber(request, reply, app);
             return result;
         } catch (error) {
-            console.error("Erro ao inserir contas a receber", error)
+            console.error("Erro ao inserir contas a receber", error);
         }
     },
 

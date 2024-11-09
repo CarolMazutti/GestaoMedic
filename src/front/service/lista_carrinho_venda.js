@@ -21,15 +21,16 @@ function preencherTabela(carrinho_venda) {
     carrinho_venda.forEach(carrinho_venda => {
         const linha = tabela.insertRow();
         linha.insertCell(0).textContent = carrinho_venda.usuario_carrinho_id;
-        linha.insertCell(1).textContent = carrinho_venda.produto_carrinho_id;
-        linha.insertCell(2).textContent = carrinho_venda.quantidade;
-        linha.insertCell(3).textContent = carrinho_venda.valor_unitario;
-        linha.insertCell(4).textContent = carrinho_venda.valor_total;
-        linha.insertCell(5).textContent = carrinho_venda.data_venda;
-        linha.insertCell(6).textContent = carrinho_venda.condicao_de_pagamento;
+        linha.insertCell(1).textContent = carrinho_venda.cliente;
+        linha.insertCell(2).textContent = carrinho_venda.produto_carrinho_id;
+        linha.insertCell(3).textContent = carrinho_venda.quantidade;
+        linha.insertCell(4).textContent = carrinho_venda.valor_unitario;
+        linha.insertCell(5).textContent = carrinho_venda.valor_total;
+        linha.insertCell(6).textContent = carrinho_venda.data_venda;
+        linha.insertCell(7).textContent = carrinho_venda.condicao_de_pagamento;
 
         // Cria a célula com o botão de excluir
-        const cellExcluir = linha.insertCell(7);
+        const cellExcluir = linha.insertCell(8);
         const btnExcluir = document.createElement('button');
         btnExcluir.textContent = 'Excluir';
         btnExcluir.onclick = () => excluirCarrinho_venda(carrinho_venda.id_carrinho_venda);

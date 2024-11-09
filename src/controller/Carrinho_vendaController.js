@@ -28,7 +28,7 @@ const Carrinho_vendaController = {
             console.error("Erro ao inserir item no carrinho: ", error);
         }
     },
-
+    
     async excluirCarrinho_venda(request, reply, app){
         try {
             const result = await Carrinho_vendaModel.excluirCarrinho_venda(request, reply, app);

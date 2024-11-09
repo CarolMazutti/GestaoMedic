@@ -1,7 +1,8 @@
-async function inserirVenda() {
+async function inserirCarrinho_venda() {
     try {
         // Coletar dados do formulário
         const usuario = document.getElementById('usuario').value;
+        const cliente = document.getElementById('cliente').value;
         const produto = document.getElementById('produto').value;
         const quantidade = document.getElementById('quantidade').value;
         const valorUnitario = document.getElementById('valorUnitario').value;
@@ -18,6 +19,7 @@ async function inserirVenda() {
         // Preparar dados para envio
         const carrinho_venda = {
             usuario_carrinho_id: usuario,
+            cliente: cliente,
             produto_carrinho_id: produto,
             quantidade: quantidade,
             data_venda: dataVenda,
@@ -79,6 +81,7 @@ async function inserirVenda() {
 }
 function limparFormulario() {
     document.getElementById('usuario').value = '';
+    document.getElementById('cliente').value = '';
     document.getElementById('produto').value = '';
     document.getElementById('quantidade').value = '';
     document.getElementById('desconto').value = '';
@@ -101,6 +104,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             const carrinho_venda = await response.json();
 
             document.getElementById('edita_usuario').value = carrinho_venda.usuario_carrinho_id;
+            document.getElementById('edita_cliente').value = carrinho_venda.cliente;
             document.getElementById('edita_produto').value = carrinho_venda.produto_carrinho_id;
             document.getElementById('edita_quantidade').value = carrinho_venda.quantidade;
             document.getElementById('edita_valorUnitario').value = carrinho_venda.valor_unitario;
@@ -122,6 +126,7 @@ async function atualizaCarrinho_venda() {
     const id_carrinho_venda = urlParams.get('id');
 
     const usuario_carrinho_id = document.getElementById('edita_usuario').value;
+    const cliente = document.getElementById('edita_cliente').value;
     const produto_carrinho_id = document.getElementById('edita_produto').value;
     const quantidade = document.getElementById('edita_quantidade').value;
     const valor_unitario = document.getElementById('edita_valorUnitario').value;
@@ -132,6 +137,7 @@ async function atualizaCarrinho_venda() {
 
     const carrinho_vendaAtualizado = {
         usuario_carrinho_id,
+        cliente,
         produto_carrinho_id,
         quantidade,
         data_venda,
