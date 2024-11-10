@@ -1,4 +1,4 @@
-GET http://localhost:3333/contas_a_receber
+GET http://localhost:3333/fornecedor
 
 ###
 
@@ -6,8 +6,8 @@ POST http://localhost:3333/contas_a_receber
 Content-Type: application/json
 
 {
-    "cliente_contas_receber_id": 9,
-    "valor": "10.00",
+    "cliente_contas_receber_id": 4,
+    "valor": "20.00",
     "data_vencimento": "2024-12-15T03:00:00.000Z",
     "data_recebimento": "2024-12-15T03:00:00.000Z"
 }

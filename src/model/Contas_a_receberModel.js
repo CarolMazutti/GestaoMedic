@@ -28,22 +28,22 @@ const Contas_a_receberModel = {
             }
         },
 
-        async inserirContas_a_receber(request, reply, app){
-            try {
-                app.pg.query(`INSERT INTO contas_a_receber (cliente_contas_receber_id, valor, data_vencimento, data_recebimento)
-                            VALUES (${Number(request.body.cliente_contas_receber_id)}, '${request.body.valor}', '${request.body.data_vencimento}', '${request.body.data_recebimento}')`,
-                function onResult(err, result){
-                    if (err) {
-                        reply.send(err)
-                    } else {
-                    reply.send({ mensagem: 'Contas a receber inserido com sucesso' })
-                    }
+    async inserirContas_a_receber(request, reply, app){
+        try {
+            app.pg.query(`INSERT INTO contas_a_receber (cliente_contas_receber_id, valor, data_vencimento, data_recebimento)
+                        VALUES (${Number(request.body.cliente_contas_receber_id)}, '${request.body.valor}', '${request.body.data_vencimento}', '${request.body.data_recebimento}')`,
+            function onResult(err, result){
+                if (err) {
+                    reply.send(err)
+                } else {
+                reply.send({ mensagem: 'Contas a receber inserido com sucesso' })
                 }
-            )
-            } catch (error) {
-                console.error("Erro ao conectar no banco: ", error)
             }
-        },
+        )
+        } catch (error) {
+            console.error("Erro ao conectar no banco: ", error)
+        }
+    },
 
     async atualizarContas_a_receber(request, reply, app){
         try {

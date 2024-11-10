@@ -29,17 +29,6 @@ async function inserirContas_a_receber() {
             body: JSON.stringify(contas_a_receber),
         });
 
-//         if (!response.ok) {
-//             throw new Error('Erro ao inserir contas a receber.');
-//         }
-
-//             alert('Contas a receber inserido com sucesso');
-//             document.getElementById("contasReceberForm").reset();
-//     } catch (error) {
-//         console.error('Erro:', error);
-//         alert('Erro ao inserir contas a receber');
-//     }
-// }
         const data = await response.json();
 
         if (response.ok) 
