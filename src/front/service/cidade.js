@@ -69,6 +69,12 @@ async function carregarEstados() {
         const estados = await response.json();
         const select_estado = document.getElementById('select_estado');
 
+        // Adiciona a opção padrão
+        const opcaoDefault = document.createElement("option");
+        opcaoDefault.value = ""; // Valor vazio para indicar que nada foi selecionado
+        opcaoDefault.textContent = "Selecione o estado"; // Texto da opção padrão
+        select_estado.appendChild(opcaoDefault);
+
         estados.forEach(estado => {
             const opcao = document.createElement("option");
             opcao.value = estado.id_estado
@@ -81,6 +87,8 @@ async function carregarEstados() {
         alert("Erro ao buscar estados")
     }
 }
+
+
 
 async function atualizaCidade() {
     const urlParams = new URLSearchParams(window.location.search);
