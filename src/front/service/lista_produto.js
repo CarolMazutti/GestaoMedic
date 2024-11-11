@@ -25,12 +25,11 @@ function preencherTabela(produtos) {
         linha.insertCell(1).textContent = produto.nome;
         linha.insertCell(2).textContent = produto.descricao;
         linha.insertCell(3).textContent = produto.preco;
-        linha.insertCell(4).textContent = produto.quantidade;
-        linha.insertCell(5).textContent = produto.fornecedor_produto_id;
+        linha.insertCell(4).textContent = produto.fornecedor_produto_id;
 
 
         // Cria a célula com o botão de excluir
-        const cellExcluir = linha.insertCell(6);
+        const cellExcluir = linha.insertCell(5);
         const btnExcluir = document.createElement('button');
         btnExcluir.textContent = 'Excluir';
         btnExcluir.onclick = () => excluirProduto(produto.id_produto);
