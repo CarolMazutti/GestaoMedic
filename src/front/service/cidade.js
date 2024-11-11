@@ -59,6 +59,11 @@ document.addEventListener('DOMContentLoaded', carregarEstados, async function() 
     }
 });
 
+function salvarEstadoSelecionado() {
+    const estadoId = document.getElementById('select_estado').value;
+    localStorage.setItem('estadoSelecionado', estadoId);
+}
+
 async function carregarEstados() {
     try {
         const response =  await fetch('http://localhost:3333/estado');
@@ -69,7 +74,7 @@ async function carregarEstados() {
         const estados = await response.json();
         const select_estado = document.getElementById('select_estado');
 
-        // Adiciona a opção padrão
+        // // Adiciona a opção padrão
         const opcaoDefault = document.createElement("option");
         opcaoDefault.value = ""; // Valor vazio para indicar que nada foi selecionado
         opcaoDefault.textContent = "Selecione o estado"; // Texto da opção padrão
@@ -81,6 +86,14 @@ async function carregarEstados() {
             opcao.textContent = estado.nome
             select_estado.appendChild(opcao);
         });
+
+        const estado_selecionado = document.getElementById('estado_selecionado')
+        const estadoSelecionado = localStorage.getItem('estadoSelecionado');
+        console.log("estado selecionado agora: ", estadoSelecionado)
+
+        if (estadoSelecionado) {
+            estado_selecionado.textContent = estadoSelecionado;
+        }
 
     } catch (error) {
         console.error("erro: ", error)

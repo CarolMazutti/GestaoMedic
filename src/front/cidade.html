@@ -43,8 +43,8 @@
                                             placeholder="Nome">
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <select class="form-control form-control-user"  id="select_estado" aria-label="Estado">
-                                            <!-- <option></option> -->
+                                        <select class="form-control form-control-user"  id="select_estado" aria-label="Estado" onchange="salvarEstadoSelecionado()">
+                                            <option id="estado_selecionado"></option>
                                         </select>
                                     </div>
                                 </div>
@@ -78,7 +78,6 @@
 
     <!-- Script para inserir cidade -->
     <script src="service/cidade.js"></script>
-
     
 </body>
 
