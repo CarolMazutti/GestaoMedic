@@ -25,10 +25,8 @@ const Contas_a_pagarController = {
         try {
             const result = await Contas_a_pagarModel.inserirContas_a_pagar(request, reply, app);
 
-            if (result.success){
-                reply.status(200).send({message: "Contas a pagar inserido com sucesso"})
-            }
-            
+            return result;
+
         } catch (error) {
             console.error("Erro ao inserir contas a pagar", error)
         }

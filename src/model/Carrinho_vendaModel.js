@@ -49,7 +49,7 @@ const Carrinho_vendaModel = {
         `INSERT INTO carrinho_venda (usuario_carrinho_id, produto_carrinho_id, quantidade, data_venda, valor_unitario, condicao_de_pagamento, valor_total, cliente)
                         VALUES (${Number(request.body.usuario_carrinho_id)}, ${Number(request.body.produto_carrinho_id)}, 
                         '${request.body.quantidade}', '${request.body.data_venda}', '${request.body.valor_unitario}', 
-                        '${request.body.condicao_de_pagamento}', '${request.body.valor_total}''${request.body.cliente}')`,
+                        '${request.body.condicao_de_pagamento}', '${request.body.valor_total}','${request.body.cliente}')`,
         function onResult(err, result) {
           if (err) {
             reply.status(500).send(err);

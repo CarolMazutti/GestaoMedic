@@ -36,7 +36,7 @@ const Contas_a_receberModel = {
                 if (err) {
                     reply.send(err)
                 } else {
-                reply.send({ mensagem: 'Contas a receber inserido com sucesso' })
+                    reply.send({ mensagem: 'Contas a receber inserido com sucesso' })
                 }
             }
         )
